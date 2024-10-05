@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-jetbrains; /* Apply JetBrains Mono font to the entire body */
+}
+
+html {
+  @apply bg-gray-900;
+}
