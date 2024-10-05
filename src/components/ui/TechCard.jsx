@@ -1,7 +1,7 @@
 const TechCard = ({ image, name }) => {
   return (
-    <li className="flex flex-col items-center bg-gray-700 p-4 rounded-lg w-24 h-24 mb-4">
-      <img src={image} alt={name} className="h-10 w-10 mb-2" />
+    <li className="mb-4 flex h-24 w-24 flex-col items-center rounded-lg bg-gray-700 p-4 hover:bg-gray-900">
+      <img src={image} alt={name} className="mb-2 h-10 w-10" />
       <span className="text-sm">{name}</span>
     </li>
   );

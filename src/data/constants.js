@@ -64,6 +64,6 @@ export const projects = [
     description:
       "A command-line tool to track and display a user's GitHub information directly in the terminal.",
     github: "https://github.com/harsh-m-patil/GitTrack",
-    techStack: ["Golang", "Cobra"],
+    techStack: ["Golang", "Cobra", "Github-API"],
   },
 ];
