@@ -1,6 +1,6 @@
 const ProjectCard = ({ project }) => {
   return (
-    <li className="relative rounded-lg bg-gray-800 p-6 hover:shadow-gray-800 hover:scale-105 transition-all duration-300 hover:shadow-lg">
+    <li className="relative rounded-lg bg-gray-800 p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gray-800">
       {/* Project Preview with Hover Effect */}
       <div className="group relative">
         <img
