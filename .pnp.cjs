@@ -29,6 +29,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@astrojs/check", "virtual:3786d9363fd0a547cdeba13dbbd7739095de182e2f1aa37c74f8398253205a5b62b2735c6799681aabf1f7716a4d0562fe89843678033b5bdce0191960fb23a9#npm:0.9.4"],\
           ["astro", "npm:4.16.10"],\
+          ["prettier", "npm:3.3.3"],\
           ["prettier-plugin-astro", "npm:0.14.1"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=74658d"]\
         ],\
@@ -4295,6 +4296,7 @@ const RAW_RUNTIME_STATE =
           ["portfolio", "workspace:."],\
           ["@astrojs/check", "virtual:3786d9363fd0a547cdeba13dbbd7739095de182e2f1aa37c74f8398253205a5b62b2735c6799681aabf1f7716a4d0562fe89843678033b5bdce0191960fb23a9#npm:0.9.4"],\
           ["astro", "npm:4.16.10"],\
+          ["prettier", "npm:3.3.3"],\
           ["prettier-plugin-astro", "npm:0.14.1"],\
           ["typescript", "patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=74658d"]\
         ],\

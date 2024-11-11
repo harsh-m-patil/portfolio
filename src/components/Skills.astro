@@ -1,0 +1,47 @@
+---
+import TechCard from "../components/TechCard.astro";
+import { skills } from "../config/config";
+---
+
+<section id="skills">
+  <h1>Current Technologies</h1>
+  <div class="skills-container">
+    {
+      skills.map((skill) => (
+        <TechCard image={skill.image} name={skill.name} desc={skill.desc} />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  #skills {
+    min-height: 80vh;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+    width: 100%;
+    color: #7aa2f7;
+    margin-bottom: 5rem;
+  }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem; /* Equivalent to Tailwind's gap-4 */
+
+    /* For small screens (min-width: 640px) */
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* For large screens (min-width: 1024px) */
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
