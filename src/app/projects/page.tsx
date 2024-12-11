@@ -41,7 +41,7 @@ const page = () => {
       <h2 className="text-3xl md:text-5xl md:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white py-5 ">
         <span>These are my Projects</span>
       </h2>
-      <div className="grid grid-cols-2 mx-auto max-w-4xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 mx-auto max-w-4xl">
         {projects.map((project, idx) => (
           <ProjectCard {...project} key={idx} />
         ))}
