@@ -14,14 +14,14 @@ export function Dock() {
       icon: (
         <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/",
     },
     {
       title: "Projects",
       icon: (
         <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/projects",
     },
     {
       title: "LinkedIn",
@@ -39,7 +39,7 @@ export function Dock() {
     },
   ];
   return (
-    <div className="fixed bottom-0 left-0 right-0 flex p-5 items-center justify-center">
+    <div className="fixed bottom-0 z-50 left-0 right-0 flex p-5 items-center justify-center">
       <FloatingDock
         //mobileClassName="translate-y-20" // only for demo, remove for production
         items={links}

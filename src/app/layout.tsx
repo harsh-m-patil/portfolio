@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Dock } from "@/components/Dock";
@@ -36,8 +38,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Dock />
+          <div>
+            {children}
+            <ShootingStars />
+            <StarsBackground />
+            <Dock />
+          </div>
         </ThemeProvider>
       </body>
     </html>
