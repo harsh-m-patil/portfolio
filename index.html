@@ -11,14 +11,101 @@
     />
   </head>
   <body>
+    <!-- Navbar -->
     <nav
-      id="navbar"
-      class="flex sticky top-0 left-0 right-0 bg-white p-4 z-10 justify-between"
+      class="p-3 flex bg-white justify-between items-center sticky top-0 left-0 right-0 z-20 shadow-md"
     >
-      <a href="#"> <span class="text-xl font-display"> harshmpatil </span></a>
-      <button>
+      <a href="#" class="flex gap-2 items-center flex-1">
+        <!--<img-->
+        <!--  class="object-cover max-w-12 max-h-12"-->
+        <!--  src="./assets/asset 0.png"-->
+        <!--  alt="Logo"-->
+        <!--/>-->
+        <span class="text-lg font-medium font-display">harshmpatil</span>
+      </a>
+      <div id="nav-menu" class="hidden lg:flex gap-12">
+        <a href="#" class="font-medium hover:text-primary">
+          <i class="fa-solid fa-terminal p-2"></i>
+          Projects
+        </a>
+        <a
+          href="https://www.linkedin.com/in/harshmpatil"
+          target="_blank"
+          class="font-medium hover:text-primary"
+        >
+          <i class="fa-brands fa-linkedin p-2"></i>
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/harsh-m-patil/"
+          target="_blank"
+          class="font-medium hover:text-primary"
+        >
+          <i class="fa-brands fa-github p-2"></i>
+          GitHub
+        </a>
+      </div>
+      <div class="hidden lg:flex flex-1 justify-end">
+        <a href="https://github.com/harsh-m-patil/portfolio" target="_blank">
+          <button
+            class="flex gap-2 items-center border border-gray-400 px-6 py-2 rounded-lg hover:border-gray-600"
+          >
+            <span class="font-display font-medium">Source Code</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </a>
+      </div>
+
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
         <i class="fa-solid fa-bars text-gray-600"></i>
       </button>
+
+      <div
+        id="nav-dialog"
+        class="hidden fixed z-10 md:hidden bg-white inset-0 p-3 transition duration"
+      >
+        <div id="nav-bar" class="flex justify-between">
+          <a href="#" id="brand" class="flex gap-2 items-center">
+            <span class="text-lg font-medium font-display">harshmpatil</span>
+          </a>
+          <button class="p-2 md:hidden" onclick="handleMenu()">
+            <i class="fa-solid fa-xmark text-gray-600"></i>
+          </button>
+        </div>
+        <div class="mt-6">
+          <a
+            href="#"
+            class="font-medium m-3 p-3 hover:bg-gray-50 block rounded-lg"
+          >
+            <i class="fa-solid fa-terminal p-2"></i>
+            Projects</a
+          >
+          <a
+            href="https://www.linkedin.com/in/harshmpatil"
+            target="_blank"
+            class="font-medium m-3 p-3 hover:bg-gray-50 block rounded-lg"
+          >
+            <i class="fa-brands fa-linkedin p-2"></i>
+            LinkedIn</a
+          >
+          <a
+            href="https://github.com/harsh-m-patil/"
+            target="_blank"
+            class="font-medium m-3 p-3 hover:bg-gray-50 block rounded-lg"
+          >
+            <i class="fa-brands fa-github p-2"></i>
+            Github
+          </a>
+        </div>
+        <div class="h-[1px] bg-gray-300"></div>
+        <a href="https://github.com/harsh-m-patil/portfolio" target="_blank">
+          <button
+            class="mt-6 w-full flex gap-2 items-center px-6 py-4 rounded-lg hover:bg-gray-50"
+          >
+            <span>Source Code</span>
+          </button>
+        </a>
+      </div>
     </nav>
 
     <!--main section-->
@@ -29,23 +116,29 @@
       >
         <!--Hero container-->
         <div
-          class="max-w-4xl mx-auto px-6 pt-10 pb-32 flex flex-col sm:items-center sm:text-center sm:pt-12"
+          class="max-w-4xl mx-auto px-6 pt-28 pb-32 flex flex-col sm:items-center sm:text-center"
         >
           <div
             id="location"
-            class="flex my-6 gap-2 items-center px-3 py-1 rounded-lg border border-orange-300 bg-orange-50 w-fit shadow hover:shadow-md transition hover:-translate-y-1"
+            class="flex my-6 gap-2 items-center px-3 py-1 rounded-lg border border-orange-300 bg-orange-50 w-fit shadow hover:shadow-md transition hover:-translate-y-1 group"
           >
-            <p class="text-orange-800">Based In Maharashtra,India</p>
+            <p class="text-orange-800">
+              Based In Maharashtra,India
+              <i
+                class="fa-solid fa-location-dot pl-2 group-hover:rotate-45 inline-block transition group-hover:-translate-y-1"
+              ></i>
+            </p>
           </div>
 
           <h1
-            class="text-4xl group font-medium mt-4 md:text-5xl lg:text-6xl text-gray-900"
+            class="text-4xl group font-medium mt-4 md:text-5xl lg:text-6xl text-gray-900 group-hover:text-clip"
           >
             Hi, I’m Harshwardhan Patil
             <span
-              class="inline-block group-hover:-translate-y-5 group-hover:translate-x-5 transition duration-300"
-              >🚀</span
+              class="inline-block group-hover:-translate-y-1 group-hover:rotate-45 group-hover:translate-x-64 transition duration-1000"
             >
+              🚀
+            </span>
           </h1>
           <p class="text-xl mt-4 text-gray-800 sm:text-2xl">
             I love building things for the web. Scroll down to see my work.
@@ -92,11 +185,11 @@
             >
               <!-- React -->
               <div
-                class="flex flex-col gap-2 min-w-24 min-h-24 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col gap-2 min-w-24 min-h-24 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:-rotate-12"
               >
                 <img
                   src="https://skillicons.dev/icons?i=react"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   React
@@ -105,11 +198,11 @@
 
               <!-- Next.js -->
               <div
-                class="flex flex-col min-w-24 gap-2 min-h-24 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 gap-2 min-h-24 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:-rotate-6"
               >
                 <img
                   src="https://skillicons.dev/icons?i=nextjs"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   Next.js
@@ -118,11 +211,11 @@
 
               <!-- TypeScript -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:-rotate-3"
               >
                 <img
                   src="https://skillicons.dev/icons?i=ts"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   TypeScript
@@ -131,11 +224,11 @@
 
               <!-- Node.js -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:-rotate-2"
               >
                 <img
                   src="https://skillicons.dev/icons?i=nodejs"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   Node.js
@@ -144,11 +237,11 @@
 
               <!-- TailwindCSS -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:-rotate-1"
               >
                 <img
                   src="https://skillicons.dev/icons?i=tailwind"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   TailwindCSS
@@ -157,11 +250,11 @@
 
               <!-- Express -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:rotate-1"
               >
                 <img
                   src="https://skillicons.dev/icons?i=express"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   Express
@@ -170,11 +263,11 @@
 
               <!-- JavaScript -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:rotate-2"
               >
                 <img
                   src="https://skillicons.dev/icons?i=js"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   JavaScript
@@ -183,11 +276,11 @@
 
               <!-- MongoDB -->
               <div
-                class="flex flex-col min-w-24 min-h-24 gap-2 items-center justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 gap-2 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:rotate-3"
               >
                 <img
                   src="https://skillicons.dev/icons?i=mongodb"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   MongoDB
@@ -196,22 +289,24 @@
 
               <!-- Java -->
               <div
-                class="flex flex-col min-w-24 min-h-24 items-center gap-2 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 items-center gap-2 hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:rotate-6"
               >
                 <img
                   src="https://skillicons.dev/icons?i=java"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   Java
                 </span>
               </div>
+
+              <!-- SQL -->
               <div
-                class="flex flex-col min-w-24 min-h-24 items-center gap-2 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition"
+                class="flex flex-col min-w-24 min-h-24 items-center gap-2 hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition hover:rotate-12"
               >
                 <img
                   src="https://skillicons.dev/icons?i=postgres"
-                  class="w-12 h-12 md:h-16 md:w-16"
+                  class="w-10 h-10 md:h-14 md:w-14"
                 />
                 <span class="text-[12px] md:text-[16px] font-semibold">
                   SQL
