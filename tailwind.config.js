@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: "#3238f2",
+        dark: "#0E131F",
+        darkOrange: "#3E2200",
       },
       fontFamily: {
         display: ["Poppins", "sans-serif"],

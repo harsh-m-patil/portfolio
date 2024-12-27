@@ -3,38 +3,25 @@ function handleMenu() {
   navDialog.classList.toggle("hidden");
 }
 
-//const initialTranslateLTR = -48 * 4;
-//const initialTranslateRTL = 36 * 4;
-//
-//function setupIntersectionObserver(element, isLTR, speed) {
-//  const intersectionCallback = (entries) => {
-//    const isIntersecting = entries[0].isIntersecting;
-//
-//    if (isIntersecting) {
-//      document.addEventListener("scroll", scrollHandler);
-//    } else {
-//      document.removeEventListener("scroll", scrollHandler);
-//    }
-//  };
-//  const intersectionObserver = new IntersectionObserver(intersectionCallback);
-//
-//  intersectionObserver.observe(element);
-//
-//  function scrollHandler() {
-//    const translateX =
-//      (window.innerHeight - element.getBoundingClientRect().top) * speed;
-//
-//    let totalTranslate = 0;
-//    if (isLTR) {
-//      totalTranslate = translateX + initialTranslateLTR;
-//    } else {
-//      totalTranslate = -(translateX + initialTranslateRTL);
-//    }
-//
-//    element.style.transform = `translateX(${totalTranslate}px)`;
-//  }
-//}
-//
-//const line1 = document.getElementById("line1");
-//
-//setupIntersectionObserver(line1, true, 0.15);
+function toggleTheme() {
+  // Check if dark mode is enabled
+  if (document.documentElement.classList.contains("dark")) {
+    // Switch to light mode
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  } else {
+    // Switch to dark mode
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+// On page load, check localStorage for theme preference
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    document.documentElement.classList.add("dark");
+  }
+});
