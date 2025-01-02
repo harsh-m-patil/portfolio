@@ -20,6 +20,111 @@
   }
 }
 
+/* First, let's separate the base styling from animations */
 .skill {
-  @apply flex flex-col gap-2 min-w-24 min-h-24 items-center hover:-translate-y-2 hover:shadow-lg duration-300 justify-center bg-white rounded-xl border-gray-300 border md:min-h-32 md:min-w-32 hover:bg-gradient-to-br hover:from-red-50 hover:via-purple-50 hover:to-yellow-50 hover:border-gray-600 transition dark:bg-slate-900 dark:border-gray-600 dark:text-gray-300 dark:hover:from-blue-900 dark:hover:via-gray-900 dark:hover:to-blue-900;
+  @apply flex flex-col gap-2 min-w-24 min-h-24 items-center 
+         justify-center bg-white rounded-xl border-gray-300 border 
+         md:min-h-32 md:min-w-32 dark:bg-slate-900 dark:border-gray-600 
+         dark:text-gray-300;
+
+  /* Add separate transition properties */
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Separate hover states */
+.skill:hover {
+  @apply -translate-y-2 shadow-lg border-gray-600;
+
+  /* Light mode hover gradient */
+  background: linear-gradient(
+    to bottom right,
+    rgba(254, 242, 242, 1),
+    /* red-50 */ rgba(250, 245, 255, 1),
+    /* purple-50 */ rgba(254, 252, 232, 1) /* yellow-50 */
+  );
+}
+
+/* Dark mode hover styles */
+.dark .skill:hover {
+  background: linear-gradient(
+    to bottom right,
+    rgba(30, 58, 138, 1),
+    /* blue-900 */ rgba(17, 24, 39, 1),
+    /* gray-900 */ rgba(30, 58, 138, 1) /* blue-900 */
+  );
+}
+
+/* Pop-in animation */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hidden state */
+.skill.hidden-skill {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none; /* Prevent hover while hidden */
+}
+
+/* Animation class */
+.skill.pop-in {
+  animation: popIn 0.5s ease-out forwards;
+  pointer-events: auto; /* Re-enable hover after animation */
+}
+
+/* Optional: Add a subtle scale effect for the skill icons */
+.skill img {
+  transition: transform 0.3s ease;
+}
+
+.skill:hover img {
+  transform: scale(1.1);
+}
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hidden-element {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.tech-badge:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
 }
