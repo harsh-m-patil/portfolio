@@ -1,0 +1,21 @@
+[
+	{
+		"id": 1,
+		"icon": {
+			"type": "lucide",
+			"name": "github"
+		},
+		"text": "GitHub",
+		"link": "https://github.com/harsh-m-patil"
+	},
+	{
+		"id": 2,
+		"icon": {
+			"type": "lucide",
+			"name": "linkedin"
+		},
+		"text": "Linkedin",
+		"link": "https://www.linkedin.com/in/harshmpatil"
+	}
+]
+

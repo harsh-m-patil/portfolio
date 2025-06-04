@@ -1,0 +1,52 @@
+---
+title: WorkSphere
+date: 2025-05-06
+description: A full-stack freelancing and job board platform built with the MERN stack.
+image: ../assets/worksphere.png
+info:
+  - text: GitHub
+    link: https://github.com/harsh-m-patil/worksphere
+    icon:
+      type: lucide
+      name: github
+  - text: Live Demo
+    link: https://worksphere35.vercel.app
+    icon:
+      type: lucide
+      name: earth
+---
+WorkSphere is a full-stack freelancing and job board platform designed to seamlessly connect clients and freelancers, with a strong focus on performance, usability, and intelligent insights.
+
+Built with the MERN stack, WorkSphere features a clean, responsive UI using React and TailwindCSS. It’s secured with JWT-based authentication and Dockerized for efficient deployment. The backend includes Redis-based caching for ultra-fast API responses and integrates Vercel’s `@ai-sdk` with Gemini to generate personalized interview questions and provide actionable suggestions by analyzing job descriptions and user resumes.
+
+## Features
+
+- Responsive UI built with React + TailwindCSS
+- REST APIs for managing users, jobs, and applications
+- JWT authentication and robust input validation
+- Redis-based caching for optimized performance
+- AI integration using `@ai-sdk` with Gemini for resume & JD analysis
+- Fully Dockerized setup for development and production
+
+## AI Capabilities
+
+- Generates sample interview questions from the job description
+- Performs SWOT-style analysis of resume vs JD
+- Suggests ways to strengthen weaknesses and improve relevance
+
+## Performance Benchmarks
+
+| Metric | Without Cache | With Cache | Improvement |
+|--------|---------------|------------|-------------|
+| Min    | 8 ms          | 1 ms       | 87.5% faster |
+| Max    | 79 ms         | 41 ms      | 48.1% faster |
+| Mean   | 10.4 ms       | 2.1 ms     | 79.8% faster |
+| Median | 10.1 ms       | 2 ms       | 80.2% faster |
+| P95    | 13.1 ms       | 3 ms       | 77.1% faster |
+| P99    | 26.8 ms       | 4 ms       | 85.1% faster |
+
+## Summary
+
+WorkSphere combines performance, scalability, and intelligence to provide a robust freelancing experience for both clients and developers.
+
+
