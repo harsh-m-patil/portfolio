@@ -1,0 +1,211 @@
+---
+title: "How to Secure a MERN Stack REST API (Node.js + Express)"
+description: "A beginner-friendly guide on securing a express node mongodb api"
+image: "../assets/security.png"
+createdAt: 06-11-2025
+draft: false
+tags:
+  - express
+  - security
+  - mongodb
+---
+
+When building a REST API with Node.js and Express, security should be a top priority — especially if you're a beginner just getting started. In this blog post, we'll walk through essential backend security practices tailored for MERN stack developers.
+
+We'll focus on:
+
+* Handling environment variables
+* Validating and sanitizing data with Zod
+* Rate limiting requests to prevent abuse
+* Enabling CORS safely
+* Preventing NoSQL injection and XSS
+* Applying security best practices (Helmet, secrets, dependencies)
+
+Let’s dive into how to implement these one by one.
+
+---
+
+## 1. Environment Variables & HTTPS
+
+Never hardcode sensitive data (like DB URIs or secrets). You do not want your secrets to get leaked anywhere.
+Make sure you do not commit secret variables to version control.  
+To detect if you have commited any secrets by mistake
+you can use [gitleaks](https://github.com/gitleaks/gitleaks).  
+
+Use `dotenv` to access environment variables.
+### Install dotenv
+
+```bash
+npm install dotenv
+```
+
+### Usage
+
+```js
+require('dotenv').config();
+
+const db = process.env.MONGO_URI;
+const port = process.env.PORT || 3000;
+```
+
+Ensure `.env` is listed in `.gitignore`. Use HTTPS in production to encrypt data in transit.
+
+To detects secrets you can run the following commands.
+
+```bash
+gitleaks detect -v
+```  
+
+---
+
+##  2. Validate & Sanitize User Input 
+
+Instead of trusting user input directly, **always validate** it. We'll use [Zod](https://zod.dev) — a TypeScript-first schema validation library that works great in JavaScript too.
+
+###  Install Zod
+
+```bash
+npm install zod
+```
+
+### Example: Validating a signup form
+
+```js
+const { z } = require('zod');
+
+const userSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+
+app.post('/signup', (req, res) => {
+  const result = userSchema.safeParse(req.body);
+
+  if (!result.success) {
+    return res.status(400).json({ error: result.error.errors });
+  }
+
+  // Proceed with result.data (it's validated!)
+});
+```
+
+Zod ensures you only operate on well-structured, safe data. Much cleaner than manual checks.
+
+---
+
+## 3. Rate Limiting to Prevent Abuse
+
+To protect your API from spamming or brute-force attacks, use `express-rate-limit`.
+
+### Install it
+
+```bash
+npm install express-rate-limit
+```
+
+### Example: Basic usage
+
+```js
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per window
+});
+
+app.use(limiter); // Apply globally
+```
+
+This is especially useful on login/signup routes.
+
+---
+
+## 4. Secure CORS Configuration
+
+By default, CORS allows browsers to restrict cross-origin requests. You should configure it carefully.
+
+### Install cors
+
+```bash
+npm install cors
+```
+
+### Example: Allow only your frontend
+
+```js
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://yourfrontend.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+```
+
+Avoid `origin: '*'` unless it's a public API.
+
+---
+
+
+## 5. Prevent NoSQL Injection & XSS
+
+### NoSQL Injection
+
+Attackers may try to inject MongoDB queries like `{ "$gt": "" }`. Sanitize input!
+
+Use `express-mongo-sanitize`:
+
+```bash
+npm install express-mongo-sanitize
+```
+
+```js
+const mongoSanitize = require('express-mongo-sanitize');
+app.use(mongoSanitize());
+```
+
+### XSS (Cross-Site Scripting)
+
+Avoid returning unsanitized user data directly. Use `xss-clean`:
+
+```bash
+npm install xss-clean
+```
+
+```js
+const xss = require('xss-clean');
+app.use(xss());
+```
+
+---
+
+## 6. Other Best Practices
+
+* **Use Helmet** to set secure HTTP headers:
+
+  ```bash
+  npm install helmet
+  ```
+
+  ```js
+  const helmet = require('helmet');
+  app.use(helmet());
+  ```
+
+* **Keep dependencies updated**: Use `npm audit` and GitHub Dependabot
+
+* **Set secure cookies** if you're using sessions or refresh tokens:
+
+  ```js
+  res.cookie('token', token, { httpOnly: true, secure: true });
+  ```
+
+---
+
+## Conclusion
+
+Securing your REST API is not about one big fix, but many small smart decisions. With Zod for validation, Helmet for headers, rate limiting, sanitization, and secure config, you’ll build APIs that are robust from the start.
+
+Security is a process — keep learning and updating as your app grows! 
+
