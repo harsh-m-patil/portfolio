@@ -1,0 +1,43 @@
+---
+title: BetterNews
+date: 2025-07-18
+description: A modern Hacker News clone built with Hono, Bun, React, and the TanStack ecosystem.
+image: ../assets/betternews.png
+info:
+  - text: GitHub
+    link: https://github.com/harsh-m-patil/betternews
+    icon:
+      type: lucide
+      name: github
+  - text: Live Demo
+    link: https://betternews.onrender.com
+    icon:
+      type: lucide
+      name: earth
+---
+
+**BetterNews** is a performant, full-stack Hacker News clone designed to showcase modern web development best practices — from optimistic UI updates to type-safe APIs — all built with cutting-edge tools like Hono, Bun, and TanStack libraries.
+
+It features a clean, responsive interface, a robust backend with PostgreSQL, Drizzle ORM, and session-based auth using Lucia. Posts, comments, sorting, and voting are all implemented with URL-first design using TanStack Router, and validation is enforced across the stack using Zod.
+
+## Features
+
+- Responsive UI with React + Shadcn/UI + TailwindCSS
+- Optimistic upvoting for posts and comments
+- Nested commenting system with pagination
+- Full auth flow using Lucia (signup, login, logout)
+- URL-driven filtering and sorting (recent, top, etc.)
+- Form handling via TanStack Form + Zod (type-safe)
+- PostgreSQL via Drizzle ORM with schema-first approach
+
+## Tech Stack Highlights
+
+- **Frontend:** React, TanStack Router, TanStack Query, TanStack Form, Shadcn/UI, TypeScript, Zod
+- **Backend:** Hono (Bun), Lucia, Drizzle ORM, PostgreSQL, Zod
+
+## Development Practices
+
+- Monolithic repo with clearly separated server and client folders
+- Custom error boundaries and toast-based user feedback
+
+
