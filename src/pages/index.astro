@@ -12,7 +12,7 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 import { name, openGraph } from "spectre:globals";
 
-const [posts, projects, about, workExperience, quickInfo, socials] =
+const [posts, projects, about, workExperience, quickInfo, socials, skills] =
   await Promise.all([
     getCollection("posts", (post) => post.data.draft !== true),
     getCollection("projects"),
@@ -20,6 +20,7 @@ const [posts, projects, about, workExperience, quickInfo, socials] =
     getCollection("workExperience"),
     getCollection("quickInfo"),
     getCollection("socials"),
+    getCollection("skills"),
   ]);
 
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
@@ -80,6 +81,22 @@ const { Content: About } = await render(about!);
         }
       </ul>
     </Card>
+    <Card>
+      <h3 class="no-mt">Skills</h3>
+      <ul class="skills">
+        {
+          skills.map((skill) => (
+            <div class="skill-item" title={skill.data.name}>
+              <Icon
+                class="skill-icon"
+                type={skill.data.icon.type}
+                name={skill.data.icon.name as any}
+              />
+            </div>
+          ))
+        }
+      </ul>
+    </Card>
   </div>
   <div class="layout-grid-right" slot="right">
     <Card>
@@ -95,6 +112,32 @@ const { Content: About } = await render(about!);
       </div>
       <div class="prose">
         <About />
+      </div>
+    </Card>
+    <Card>
+      <div class="header-container">
+        <Icon
+          type="lucide"
+          name="briefcase-business"
+          width={24}
+          height={24}
+          class="glow-icon"
+        />
+        <h2>Work Experience</h2>
+      </div>
+      <div class="work-experience-container">
+        {
+          workExperience.reverse().map((entry) => (
+            <div class="work-experience-entry">
+              <span class="work-experience-duration">
+                {entry.data.duration}
+              </span>
+              <h3 class="work-experience-company">{entry.data.company}</h3>
+              <span class="work-experience-role">{entry.data.title}</span>
+              <p class="work-experience-desc">{entry.data.description}</p>
+            </div>
+          ))
+        }
       </div>
     </Card>
     <Card>
@@ -127,36 +170,6 @@ const { Content: About } = await render(about!);
         }
       </div>
     </Card>
-    {
-      workExperience.length > 0 && (
-        <Card>
-          <div class="header-container">
-            <Icon
-              type="lucide"
-              name="briefcase-business"
-              width={24}
-              height={24}
-              class="glow-icon"
-            />
-            <h2>Work Experience</h2>
-          </div>
-          <div class="work-experience-container">
-            {workExperience.reverse().map((entry) => (
-              <div class="work-experience-entry">
-                <span class="work-experience-duration">
-                  {entry.data.duration}
-                </span>
-                <h3 class="work-experience-company">{entry.data.company}</h3>
-                <span class="work-experience-role">{entry.data.title}</span>
-                <p class="work-experience-desc">{entry.data.description}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
-      )
-    }
-    {
-      posts.length > 0 && (
     <Card>
       <div class="header-container">
         <Icon
@@ -189,7 +202,5 @@ const { Content: About } = await render(about!);
         }
       </div>
     </Card>
-      )
-    }
   </div>
 </Layout>

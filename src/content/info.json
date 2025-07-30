@@ -1,28 +1,28 @@
 [
-	{
-		"id": 1,
-		"icon": {
-			"type": "lucide",
-			"name": "graduation-cap"
-		},
-		"text": "CSE Student"
-	},
-	{
-		"id": 2,
-		"icon": {
-			"type": "lucide",
-			"name": "folder-code"
-		},
-		"type": "lucide",
-		"text": "MERN Stack Developer"
-	},
-	{
-		"id": 3,
-		"icon": {
-			"type": "lucide",
-			"name": "earth"
-		},
-		"type": "lucide",
-		"text": "Based in India"
-	}
+  {
+    "id": 1,
+    "icon": {
+      "type": "lucide",
+      "name": "graduation-cap"
+    },
+    "text": "CSE Student"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
+      "name": "folder-code"
+    },
+    "type": "lucide",
+    "text": "JS/TS Full Stack Developer"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "earth"
+    },
+    "type": "lucide",
+    "text": "Based in India"
+  }
 ]

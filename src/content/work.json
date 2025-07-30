@@ -1,2 +1,9 @@
-[]
-
+[
+	{
+		"id": 1,
+		"duration": "July 2025 - Present",
+		"company": "Workzen",
+		"title": "Backend Developer Intern",
+		"description": "working on a project that involves building an AI powered web application using Next.js"
+	}
+]

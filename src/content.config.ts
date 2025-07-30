@@ -54,6 +54,15 @@ const tags = defineCollection({
   })
 });
 
+const skills = defineCollection({
+  loader: file("src/content/skills.json"),
+  schema: z.object({
+    id: z.number(),
+    icon: z.union([lucideIconSchema, simpleIconSchema]),
+    name: z.string(),
+  })
+});
+
 const posts = defineCollection({
   loader: glob({ base: "src/content/posts", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) => z.object({
@@ -87,4 +96,4 @@ const projects = defineCollection({
   })
 });
 
-export const collections = { tags, posts, projects, other, quickInfo, socials, workExperience };
+export const collections = { tags, posts, projects, other, quickInfo, socials, workExperience, skills };

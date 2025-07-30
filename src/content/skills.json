@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "icon": {
+      "type": "simple-icons",
+      "name": "javascript"
+    },
+    "name": "JavaScript"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "simple-icons",
+      "name": "typescript"
+    },
+    "name": "TypeScript"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "simple-icons",
+      "name": "react"
+    },
+    "name": "React"
+  },
+  {
+    "id": 4,
+    "icon": {
+      "type": "simple-icons",
+      "name": "nextdotjs"
+    },
+    "name": "Next.js"
+  },
+  {
+    "id": 5,
+    "icon": {
+      "type": "simple-icons",
+      "name": "nodedotjs"
+    },
+    "name": "Node.js"
+  },
+  {
+    "id": 6,
+    "icon": {
+      "type": "simple-icons",
+      "name": "express"
+    },
+    "name": "Express.js"
+  },
+  {
+    "id": 7,
+    "icon": {
+      "type": "simple-icons",
+      "name": "hono"
+    },
+    "name": "Hono"
+  },
+  {
+    "id": 8,
+    "icon": {
+      "type": "simple-icons",
+      "name": "mongodb"
+    },
+    "name": "MongoDB"
+  },
+  {
+    "id": 9,
+    "icon": {
+      "type": "simple-icons",
+      "name": "postgresql"
+    },
+    "name": "PostgreSQL"
+  }
+]
