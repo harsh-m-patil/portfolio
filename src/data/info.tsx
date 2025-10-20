@@ -15,14 +15,14 @@ import { Java } from "@/components/ui/svgs/java";
 import { Javascript } from "@/components/ui/svgs/javascript";
 import { MongodbIconDark } from "@/components/ui/svgs/mongodbIconDark";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
+import { Postman } from "@/components/ui/svgs/postman";
 import { ReactDark } from "@/components/ui/svgs/reactDark";
 import { Reactquery } from "@/components/ui/svgs/reactquery";
 import { Redis } from "@/components/ui/svgs/redis";
 import { Tailwindcss } from "@/components/ui/svgs/tailwindcss";
 import { Trpc } from "@/components/ui/svgs/trpc";
 import { Typescript } from "@/components/ui/svgs/typescript";
-import { VercelDark } from "@/components/ui/svgs/vercelDark";
-import { Postman } from "@/components/ui/svgs/postman";
+import { Vercel } from "@/components/ui/svgs/vercelDark";
 
 type Social = {
   name: string;
@@ -134,7 +134,7 @@ export const tools: Skill[] = [
   },
   {
     name: "Vercel",
-    icon: <VercelDark />,
+    icon: <Vercel />,
   },
   {
     name: "Postman",

@@ -3,11 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { databases, languages, socials, technologies, tools } from "@/data/info";
+import {
+  databases,
+  languages,
+  socials,
+  technologies,
+  tools,
+} from "@/data/info";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto mt-16 px-4 font-sans">
+    <main className="max-w-2xl mx-auto px-4 font-sans pb-12">
       <section className="flex items-center gap-4">
         <Image
           src="/profile.png"
@@ -17,7 +23,7 @@ export default function Home() {
           className="rounded-full object-cover"
         />
         <div>
-          <h1 className="text-3xl text-white font-doto font-extrabold uppercase">
+          <h1 className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
             Harsh
           </h1>
           <p className="text-muted-foreground">@harshmpatil</p>
@@ -55,7 +61,7 @@ export default function Home() {
       <section>
         <p className="text-muted-foreground">
           In case you want to contact me. You can find me here (
-          <span className="text-white font-mono">online</span>).
+          <span className="dark:text-white font-mono">online</span>).
         </p>
         <div className="flex py-3 gap-2 flex-wrap">
           {socials.map((s) => (
@@ -72,7 +78,7 @@ export default function Home() {
       <section>
         <div>
           <p className="text-muted-foreground/50">
-            <span className="mr-3 text-white text-2xl font-doto font-extrabold tracking-wider">
+            <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
               Skills
             </span>
             Tech I like and use
@@ -102,9 +108,7 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <h4 className="text-muted-foreground pt-3">
-          {"< DATABASES />"}
-        </h4>
+        <h4 className="text-muted-foreground pt-3">{"< DATABASES />"}</h4>
         <div className="flex py-3 gap-3 flex-wrap">
           {databases.map((t) => (
             <Button key={t.name} variant="secondary">
@@ -113,9 +117,7 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <h4 className="text-muted-foreground pt-3">
-          {"< DEVELOPER TOOLS />"}
-        </h4>
+        <h4 className="text-muted-foreground pt-3">{"< DEVELOPER TOOLS />"}</h4>
         <div className="flex py-3 gap-3 flex-wrap">
           {tools.map((t) => (
             <Button key={t.name} variant="secondary">
@@ -126,6 +128,16 @@ export default function Home() {
         </div>
       </section>
       <Separator className="my-6" />
+      <section>
+        <div>
+          <p className="text-muted-foreground/50">
+            <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
+              Work
+            </span>
+            This is my work experience
+          </p>
+        </div>
+      </section>
     </main>
   );
 }
