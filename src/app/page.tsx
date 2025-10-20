@@ -1,103 +1,131 @@
+import { Download } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { databases, languages, socials, technologies, tools } from "@/data/info";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main className="max-w-2xl mx-auto mt-16 px-4 font-sans">
+      <section className="flex items-center gap-4">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/profile.png"
+          alt="Harsh Patil profile picture"
+          width={100}
+          height={100}
+          className="rounded-full object-cover"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div>
+          <h1 className="text-3xl text-white font-doto font-extrabold uppercase">
+            Harsh
+          </h1>
+          <p className="text-muted-foreground">@harshmpatil</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      <div className="py-6 [&_p]:py-2 leading-relaxed tracking-tight [&_span]:text-foreground [&_span]:font-mono [&_p]:text-muted-foreground">
+        <p>
+          Hi I am <span>Harsh</span>, a 22 yo developer living in Kolhapur,
+          India. I try to <span>code</span> and not to break things.
+        </p>
+        <p>
+          I like to call myself a <span>Full Stack Developer</span> with means I
+          am equally good (<span>bad</span>) at both frontend and backend.
+        </p>
+        <p>
+          Recently i am looking at a lot of <span>AI</span> Stuff, so maybe I
+          can also call myself a <span>AI Engineer</span>. Even though I am
+          clearly not.
+        </p>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+        <Button variant="secondary">
+          <span className="relative flex size-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+          </span>
+          Available for new opportunities
+        </Button>
+        <Button variant="secondary">
+          <Download />
+          Download CV
+        </Button>
+      </div>
+      <Separator className="my-6" />
+      <section>
+        <p className="text-muted-foreground">
+          In case you want to contact me. You can find me here (
+          <span className="text-white font-mono">online</span>).
+        </p>
+        <div className="flex py-3 gap-2 flex-wrap">
+          {socials.map((s) => (
+            <Link href={s.href} key={s.name}>
+              <Button variant="secondary">
+                {s.icon}
+                {s.name}
+              </Button>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <Separator className="my-6" />
+      <section>
+        <div>
+          <p className="text-muted-foreground/50">
+            <span className="mr-3 text-white text-2xl font-doto font-extrabold tracking-wider">
+              Skills
+            </span>
+            Tech I like and use
+          </p>
+          <p className="text-muted-foreground/80 mt-2">
+            These are some of the techlogies that I have learned and grown to
+            love over my tech journey.
+          </p>
+        </div>
+        <h4 className="text-muted-foreground pt-3">{"< LANGUAGES />"}</h4>
+        <div className="flex py-3 gap-3 flex-wrap">
+          {languages.map((s) => (
+            <Button key={s.name} variant="secondary">
+              {s.icon}
+              {s.name}
+            </Button>
+          ))}
+        </div>
+        <h4 className="text-muted-foreground pt-3">
+          {"< FRAMEWORKS/ TECHNOLOGIES />"}
+        </h4>
+        <div className="flex py-3 gap-3 flex-wrap">
+          {technologies.map((t) => (
+            <Button key={t.name} variant="secondary">
+              {t.icon}
+              {t.name}
+            </Button>
+          ))}
+        </div>
+        <h4 className="text-muted-foreground pt-3">
+          {"< DATABASES />"}
+        </h4>
+        <div className="flex py-3 gap-3 flex-wrap">
+          {databases.map((t) => (
+            <Button key={t.name} variant="secondary">
+              {t.icon}
+              {t.name}
+            </Button>
+          ))}
+        </div>
+        <h4 className="text-muted-foreground pt-3">
+          {"< DEVELOPER TOOLS />"}
+        </h4>
+        <div className="flex py-3 gap-3 flex-wrap">
+          {tools.map((t) => (
+            <Button key={t.name} variant="secondary">
+              {t.icon}
+              {t.name}
+            </Button>
+          ))}
+        </div>
+      </section>
+      <Separator className="my-6" />
+    </main>
   );
 }
