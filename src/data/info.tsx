@@ -155,3 +155,21 @@ export const workExperience = [
     ],
   },
 ];
+
+export const projects = [
+  {
+    name: "Interview Archive",
+    imageUrl: "/projects/interview.png",
+    description: "Discover & Share Interview Questions",
+    href: "https://interview-archive.vercel.app/",
+    github: "https://github.com/harsh-m-patil/interview-archive",
+  },
+  {
+    name: "WorkSphere",
+    imageUrl: "/projects/worksphere.png",
+    description:
+      "A Modern Job Board Platform Connecting Talent with Opportunity",
+    href: "https://worksphere35.vercel.app/",
+    github: "https://github.com/harsh-m-patil/worksphere",
+  },
+];

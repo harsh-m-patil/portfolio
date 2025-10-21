@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { workExperience } from "@/data/info";
 
 export function WorkExperienceSection() {

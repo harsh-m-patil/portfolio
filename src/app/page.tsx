@@ -1,8 +1,10 @@
-import { Separator } from "@/components/ui/separator";
-import { HeroSection } from "@/components/custom/hero-section";
 import { ContactSection } from "@/components/custom/contact-section";
-import { WorkExperienceSection } from "@/components/custom/work-experience-section";
+import { Footer } from "@/components/custom/footer";
+import { HeroSection } from "@/components/custom/hero-section";
+import { ProjectsSection } from "@/components/custom/projects-section";
 import { SkillsSection } from "@/components/custom/skills-section";
+import { WorkExperienceSection } from "@/components/custom/work-experience-section";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
@@ -15,6 +17,9 @@ export default function Home() {
       <Separator className="my-6" />
       <SkillsSection />
       <Separator className="my-6" />
+      <ProjectsSection />
+      <Separator className="my-6" />
+      <Footer />
     </main>
   );
 }

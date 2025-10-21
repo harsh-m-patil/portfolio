@@ -1,6 +1,7 @@
 import { CodeTitle } from "@/components/custom/code-title";
 import { Button } from "@/components/ui/button";
 import { databases, languages, technologies, tools } from "@/data/info";
+import { SkillBadge } from "./skill-badge";
 
 export function SkillsSection() {
   return (
@@ -20,37 +21,37 @@ export function SkillsSection() {
       <CodeTitle>LANGUAGES</CodeTitle>
       <div className="flex py-3 gap-3 flex-wrap">
         {languages.map((s) => (
-          <Button key={s.name} variant="secondary">
+          <SkillBadge key={s.name}>
             {s.icon}
             {s.name}
-          </Button>
+          </SkillBadge>
         ))}
       </div>
       <CodeTitle>FRAMEWORKS/ TECHNOLOGIES</CodeTitle>
       <div className="flex py-3 gap-3 flex-wrap">
         {technologies.map((t) => (
-          <Button key={t.name} variant="secondary">
+          <SkillBadge key={t.name}>
             {t.icon}
             {t.name}
-          </Button>
+          </SkillBadge>
         ))}
       </div>
       <CodeTitle>DATABASES</CodeTitle>
       <div className="flex py-3 gap-3 flex-wrap">
         {databases.map((t) => (
-          <Button key={t.name} variant="secondary">
+          <SkillBadge key={t.name}>
             {t.icon}
             {t.name}
-          </Button>
+          </SkillBadge>
         ))}
       </div>
       <CodeTitle>DEVELOPER TOOLS</CodeTitle>
       <div className="flex py-3 gap-3 flex-wrap">
         {tools.map((t) => (
-          <Button key={t.name} variant="secondary">
+          <SkillBadge key={t.name}>
             {t.icon}
             {t.name}
-          </Button>
+          </SkillBadge>
         ))}
       </div>
     </section>
