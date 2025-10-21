@@ -11,7 +11,7 @@ export function ContactSection() {
       </p>
       <div className="flex py-3 gap-2 flex-wrap">
         {socials.map((s) => (
-          <Link href={s.href} key={s.name}>
+          <Link href={s.href} key={s.name} target="_blank">
             <Button variant="secondary">
               {s.icon}
               {s.name}

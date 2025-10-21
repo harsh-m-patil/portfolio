@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+![Preview](./assets/preview.png)
 
-First, run the development server:
+A modern, responsive portfolio built with **Next.js 15**, **React 19**, and **Tailwind CSS 4** — perfect for showcasing your projects and skills.
+
+## Features
+
+* Clean dark/light UI with smooth animations
+* Fully responsive design
+* Theme toggle (dark/light)
+* Accessible and SEO-friendly
+* Fast development with Turbopack
+* Easy to customize
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone <repository-url>
+cd portfolio
+
+# Install dependencies
+pnpm install
+
+# Start the development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+ ├─ app/          # Pages and routes
+ ├─ components/   # UI components
+ └─ lib/          # Utilities
+public/           # Static assets
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+* Edit personal info in `src/app/page.tsx`
+* Replace profile image in `public/`
+* Update skills, experience, and links in components
+* Modify colors in `globals.css`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Next.js 15**, **React 19**, **TypeScript**
+* **Tailwind CSS**, **Radix UI**, **Lucide Icons**
+* **Biome**, **Turbopack**, **next-themes**
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm dev      # Development server
+pnpm build    # Build for production
+pnpm start    # Run production server
+pnpm lint     # Lint code
+pnpm format   # Format code
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deploy on **Vercel** or any Node.js host:
+
+```bash
+pnpm build && pnpm start
+```
+
+## License
+I don't care you can do whatever you want with this code.
+
+Built by [@harsh-m-patil](https://github.com/harsh-m-patil)
