@@ -7,7 +7,7 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import type { ReactNode } from "react";
-import { CursorDark } from "@/components/ui/svgs/cursorDark";
+import { Cursor } from "@/components/ui/svgs/cursor";
 import { Git } from "@/components/ui/svgs/git";
 import { GithubDark } from "@/components/ui/svgs/githubDark";
 import { Hono } from "@/components/ui/svgs/hono";
@@ -23,6 +23,7 @@ import { Tailwindcss } from "@/components/ui/svgs/tailwindcss";
 import { Trpc } from "@/components/ui/svgs/trpc";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Vercel } from "@/components/ui/svgs/vercelDark";
+import { Docker } from "@/components/ui/svgs/docker";
 
 type Social = {
   name: string;
@@ -124,8 +125,12 @@ export const tools = [
     icon: <GithubDark />,
   },
   {
+    name: "Docker",
+    icon: <Docker />,
+  },
+  {
     name: "Cursor",
-    icon: <CursorDark />,
+    icon: <Cursor />,
   },
   {
     name: "Vercel",

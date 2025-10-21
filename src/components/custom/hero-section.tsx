@@ -1,6 +1,6 @@
+import { Download } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
 
 export function HeroSection() {
   return (
