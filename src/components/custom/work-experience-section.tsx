@@ -21,7 +21,7 @@ export function WorkExperienceSection() {
             className="bg-transparent border-none shadow-none gap-3"
           >
             <CardHeader>
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row justify-between">
                 <div className="flex items-center gap-4">
                   <Image
                     className="rounded-md shadow"
@@ -38,7 +38,7 @@ export function WorkExperienceSection() {
                     <p className="text-muted-foreground">{xp.role}</p>
                   </div>
                 </div>
-                <div className="flex flex-col items-end">
+                <div className="flex flex-col mt-2 sm:mt-0 sm:items-end">
                   <p className="text-muted-foreground">{xp.period}</p>
                   <p className="text-muted-foreground/50">{xp.location}</p>
                 </div>
