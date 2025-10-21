@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CodeTitle } from "@/components/custom/code-title";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -9,7 +10,10 @@ import {
   socials,
   technologies,
   tools,
+  workExperience,
 } from "@/data/info";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   return (
@@ -23,9 +27,9 @@ export default function Home() {
           className="rounded-full object-cover"
         />
         <div>
-          <h1 className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
+          <div className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
             Harsh
-          </h1>
+          </div>
           <p className="text-muted-foreground">@harshmpatil</p>
         </div>
       </section>
@@ -79,6 +83,54 @@ export default function Home() {
         <div>
           <p className="text-muted-foreground/50">
             <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
+              Work
+            </span>
+            This is my work experience
+          </p>
+        </div>
+        <div className="flex flex-col gap-6 mt-4">
+          {workExperience.map((xp) => (
+            <Card key={xp.company} className="bg-transparent border-none shadow-none gap-3">
+              <CardHeader>
+                <div className="flex justify-between">
+                  <div className="flex items-center gap-4">
+                    <Image
+                      className="rounded-md shadow"
+                      src={xp.iconUrl}
+                      height={48}
+                      width={48}
+                      alt={xp.company}
+                    />
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <p>{xp.company}</p>
+                        <Badge variant="secondary">{xp.type}</Badge>
+                      </div>
+                      <p className="text-muted-foreground">{xp.role}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <p className="text-muted-foreground">{xp.period}</p>
+                    <p className="text-muted-foreground/50">{xp.location}</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc pl-12 space-y-2 text-muted-foreground/70">
+                  {xp.points.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+      <Separator className="my-6" />
+      <section>
+        <div>
+          <p className="text-muted-foreground/50">
+            <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
               Skills
             </span>
             Tech I like and use
@@ -88,7 +140,9 @@ export default function Home() {
             love over my tech journey.
           </p>
         </div>
-        <h4 className="text-muted-foreground pt-3">{"< LANGUAGES />"}</h4>
+        <CodeTitle>
+          LANGUAGES
+        </CodeTitle>
         <div className="flex py-3 gap-3 flex-wrap">
           {languages.map((s) => (
             <Button key={s.name} variant="secondary">
@@ -97,9 +151,9 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <h4 className="text-muted-foreground pt-3">
-          {"< FRAMEWORKS/ TECHNOLOGIES />"}
-        </h4>
+        <CodeTitle>
+          FRAMEWORKS/ TECHNOLOGIES
+        </CodeTitle>
         <div className="flex py-3 gap-3 flex-wrap">
           {technologies.map((t) => (
             <Button key={t.name} variant="secondary">
@@ -108,7 +162,9 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <h4 className="text-muted-foreground pt-3">{"< DATABASES />"}</h4>
+        <CodeTitle>
+          DATABASES
+        </CodeTitle>
         <div className="flex py-3 gap-3 flex-wrap">
           {databases.map((t) => (
             <Button key={t.name} variant="secondary">
@@ -117,7 +173,9 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <h4 className="text-muted-foreground pt-3">{"< DEVELOPER TOOLS />"}</h4>
+        <CodeTitle>
+          DEVELOPER TOOLS
+        </CodeTitle>
         <div className="flex py-3 gap-3 flex-wrap">
           {tools.map((t) => (
             <Button key={t.name} variant="secondary">
@@ -128,16 +186,6 @@ export default function Home() {
         </div>
       </section>
       <Separator className="my-6" />
-      <section>
-        <div>
-          <p className="text-muted-foreground/50">
-            <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
-              Work
-            </span>
-            This is my work experience
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

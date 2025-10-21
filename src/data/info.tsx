@@ -30,11 +30,6 @@ type Social = {
   href: string;
 };
 
-type Skill = {
-  name: string;
-  icon: ReactNode;
-};
-
 export const socials: Social[] = [
   {
     name: "Email Me",
@@ -58,7 +53,7 @@ export const socials: Social[] = [
   },
 ];
 
-export const languages: Skill[] = [
+export const languages = [
   {
     name: "Java",
     icon: <Java />,
@@ -73,7 +68,7 @@ export const languages: Skill[] = [
   },
 ];
 
-export const technologies: Skill[] = [
+export const technologies = [
   {
     name: "React",
     icon: <ReactDark />,
@@ -104,7 +99,7 @@ export const technologies: Skill[] = [
   },
 ];
 
-export const databases: Skill[] = [
+export const databases = [
   {
     name: "MongoDB",
     icon: <MongodbIconDark />,
@@ -119,7 +114,7 @@ export const databases: Skill[] = [
   },
 ];
 
-export const tools: Skill[] = [
+export const tools = [
   {
     name: "Git",
     icon: <Git />,
@@ -139,5 +134,19 @@ export const tools: Skill[] = [
   {
     name: "Postman",
     icon: <Postman />,
+  },
+];
+
+export const workExperience = [
+  {
+    company: "Talnex",
+    role: "Full Stack Developer Intern",
+    type: "intern",
+    iconUrl: "/talnex.png",
+    period: "Aug 2025 - Sept 2025",
+    location: "Remote",
+    points: [
+      "Engineered backend features in a production-grade Next.js app with Supabase PostgreSQL, ensuring scalability and reliability",
+    ],
   },
 ];
