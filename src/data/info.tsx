@@ -165,11 +165,34 @@ export const projects = [
     github: "https://github.com/harsh-m-patil/interview-archive",
   },
   {
+    name: "Resume LSP",
+    imageUrl: "/projects/resume-lsp.png",
+    description:
+      "A minimal LSP implementation in Go tailored for resume text analysis.",
+    href: "https://github.com/harsh-m-patil/lsp-for-resumes/tree/resume-optimus",
+    github:
+      "https://github.com/harsh-m-patil/lsp-for-resumes/tree/resume-optimus",
+  },
+  {
     name: "WorkSphere",
     imageUrl: "/projects/worksphere.png",
     description:
       "A Modern Job Board Platform Connecting Talent with Opportunity",
     href: "https://worksphere35.vercel.app/",
     github: "https://github.com/harsh-m-patil/worksphere",
+  },
+  {
+    name: "Betternews",
+    imageUrl: "/projects/betternews.png",
+    description: "Full Stack Hackernews Clone",
+    href: "https://betternews.onrender.com",
+    github: "https://github.com/harsh-m-patil/betternews",
+  },
+  {
+    name: "CodeCraft",
+    imageUrl: "/projects/codecraft.png",
+    description: "An online code editor and snippet sharing platform.",
+    href: "https://coditer.vercel.app/",
+    github: "https://github.com/harsh-m-patil/code-crafters",
   },
 ];
