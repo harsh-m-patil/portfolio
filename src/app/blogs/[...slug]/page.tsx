@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx-components";
 import { source } from "@/lib/source";
 
-export default async function Page(props: PageProps<"/blogs/[[...slug]]">) {
+export default async function Page(props: PageProps<"/blogs/[...slug]">) {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
@@ -38,7 +38,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/blogs/[[...slug]]">,
+  props: PageProps<"/blogs/[...slug]">,
 ): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
