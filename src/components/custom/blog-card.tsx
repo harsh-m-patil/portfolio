@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Card } from "../ui/card";
+import { ExternalLink } from "lucide-react";
+import { IconExternalLink } from "@tabler/icons-react";
 
 type BlogCardProps = {
   blog: {
@@ -12,8 +15,8 @@ type BlogCardProps = {
 
 export function BlogCard({ blog, url }: BlogCardProps) {
   return (
-    <div className="flex gap-2 flex-col sm:flex-row border rounded-md">
-      <div>
+    <Card className="grid grid-cols-4 gap-2 border rounded-md p-0">
+      <div className="col-span-4 sm:col-span-1">
         {blog.imageUrl && (
           <Link href={url}>
             <Image
@@ -21,15 +24,21 @@ export function BlogCard({ blog, url }: BlogCardProps) {
               height="200"
               width="400"
               alt={blog.title}
-              className="w-full rounded-l-md"
+              priority
+              className="w-full rounded-l-md h-full object-cover"
             />
           </Link>
         )}
       </div>
-      <div className="text-muted-foreground py-3 px-2">
+      <div className="text-muted-foreground py-3 px-2 col-span-4 sm:col-span-3">
         <p className="text-xl text-foreground">{blog.title}</p>
         <p className="mt-2 text-muted-foreground">{blog.description}</p>
+        <div className="flex w-full justify-end px-4 py-3">
+          <Link href={url} className="underline tracking-widest">
+            {"<ReadBlog/>"}
+          </Link>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 }
