@@ -6,8 +6,9 @@ export function ContactSection() {
   return (
     <section>
       <p className="text-muted-foreground">
-        In case you want to contact me. You can find me here (
-        <span className="dark:text-white font-mono">online</span>).
+        In case you want to{" "}
+        <span className="dark:text-white font-mono">contact</span> me. You can
+        find me here.
       </p>
       <div className="flex py-3 gap-2 flex-wrap">
         {socials.map((s) => (

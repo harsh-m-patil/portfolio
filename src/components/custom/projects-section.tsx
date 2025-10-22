@@ -1,14 +1,13 @@
 import { IconBrandGithub } from "@tabler/icons-react";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
 } from "@/components/ui/card";
 import { projects } from "@/data/info";
-import Image from "next/image";
 
 export function ProjectsSection() {
   return (
@@ -32,7 +31,8 @@ export function ProjectsSection() {
                 src={p.imageUrl}
                 height="150"
                 width="150"
-                className="object-cover rounded-t-xl w-full max-h-40 transition-all duration-300"
+                loading="lazy"
+                className="object-cover rounded-t-xl w-full max-h-40"
                 alt={p.name}
               ></Image>
             </CardHeader>

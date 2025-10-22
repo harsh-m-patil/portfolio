@@ -8,6 +8,7 @@ import {
 } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 import { Cursor } from "@/components/ui/svgs/cursor";
+import { Docker } from "@/components/ui/svgs/docker";
 import { Git } from "@/components/ui/svgs/git";
 import { GithubDark } from "@/components/ui/svgs/githubDark";
 import { Hono } from "@/components/ui/svgs/hono";
@@ -23,7 +24,6 @@ import { Tailwindcss } from "@/components/ui/svgs/tailwindcss";
 import { Trpc } from "@/components/ui/svgs/trpc";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Vercel } from "@/components/ui/svgs/vercelDark";
-import { Docker } from "@/components/ui/svgs/docker";
 
 type Social = {
   name: string;
@@ -35,7 +35,7 @@ export const socials: Social[] = [
   {
     name: "Email Me",
     icon: <IconMail className="size-4" />,
-    href: "https://www.linkedin.com/in/harshmpatil",
+    href: "mailto:humpatil1@gmail.com",
   },
   {
     name: "Github",
