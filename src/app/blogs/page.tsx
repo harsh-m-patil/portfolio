@@ -1,31 +1,19 @@
-import Link from "next/link";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { BlogCard } from "@/components/custom/blog-card";
 import { source as blog } from "@/lib/source";
 export default function BlogsPage() {
   const posts = blog.getPages();
 
   return (
-    <main className="grow container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Latest Blog Posts</h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <main className="max-w-2xl mx-auto px-4 py-8">
+      <div className="flex items-center gap-4 mb-8">
+        <h1 className="text-4xl font-bold font-doto">Blogs</h1>
+        <p className="text-muted-foreground">
+          Which I did'nt write using chatgpt
+        </p>
+      </div>
+      <div className="flex flex-col gap-4">
         {posts.map((post) => (
-          <Link
-            key={post.url}
-            href={post.url}
-            className="block hover:shadow-lg transition-shadow"
-          >
-            <Card>
-              <CardHeader>
-                <CardTitle>{post.data.title}</CardTitle>
-                <CardDescription>{post.data.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+          <BlogCard key={post.url} blog={post.data} url={post.url} />
         ))}
       </div>
     </main>

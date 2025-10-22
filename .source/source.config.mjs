@@ -5,9 +5,12 @@ import {
   frontmatterSchema,
   metaSchema
 } from "fumadocs-mdx/config";
+import { z } from "zod";
 var docs = defineDocs({
   docs: {
-    schema: frontmatterSchema,
+    schema: frontmatterSchema.extend({
+      imageUrl: z.string().optional()
+    }),
     postprocess: {
       includeProcessedMarkdown: true
     }
