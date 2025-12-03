@@ -144,6 +144,18 @@ export const tools = [
 
 export const workExperience = [
   {
+    company: "Swiggy",
+    role: "Gen AI Intern",
+    type: "intern",
+    iconUrl: "/swiggy.png",
+    period: "Oct 2025 - Present",
+    location: "Onsite - Bangalore",
+    points: [
+      "Built automation workflows using n8n to streamline internal processes for non-tech teams.",
+      "Implemented custom MCP integrations for n8n, enabling AI-powered workflow steps and improved automation.",
+    ],
+  },
+  {
     company: "Talnex",
     role: "Full Stack Developer Intern",
     type: "intern",
