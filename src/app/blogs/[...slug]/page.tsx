@@ -7,6 +7,7 @@ import {
 } from "fumadocs-ui/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { GiscusComments } from "@/components/custom/giscus-comments";
 import { getMDXComponents } from "@/components/mdx-components";
 import { source } from "@/lib/source";
 
@@ -29,6 +30,9 @@ export default async function Page(props: PageProps<"/blogs/[...slug]">) {
           })}
         />
       </DocsBody>
+      <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
+        <GiscusComments />
+      </div>
     </DocsPage>
   );
 }
