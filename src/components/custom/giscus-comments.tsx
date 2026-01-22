@@ -4,7 +4,7 @@ import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 
 export function GiscusComments() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <Giscus
@@ -17,7 +17,7 @@ export function GiscusComments() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme === "dark" ? "dark" : "light"}
+      theme={resolvedTheme === "dark" ? "dark" : "light"}
       lang="en"
       loading="lazy"
     />
