@@ -6,6 +6,9 @@ import { useTheme } from "next-themes";
 export function GiscusComments() {
   const { resolvedTheme } = useTheme();
 
+  // Don't render until theme is resolved to prevent flash
+  if (!resolvedTheme) return null;
+
   return (
     <Giscus
       id="comments"
