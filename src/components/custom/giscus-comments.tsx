@@ -13,11 +13,12 @@ export function GiscusComments() {
     <Giscus
       id="comments"
       repo="harsh-m-patil/portfolio"
-      repoId="R_kgDON2Z6Ww"
-      category="General"
-      categoryId="DIC_kwDON2Z6W84Cl-1o"
-      mapping="pathname"
+      repoId="R_kgDOO14CKg"
+      category="Announcements"
+      categoryId="DIC_kwDOO14CKs4C1SmO"
+      mapping="specific"
       reactionsEnabled="1"
+      term="comments"
       emitMetadata="0"
       inputPosition="top"
       theme={resolvedTheme === "dark" ? "dark" : "light"}
