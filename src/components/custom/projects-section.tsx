@@ -2,24 +2,17 @@ import { IconBrandGithub } from "@tabler/icons-react";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { projects } from "@/data/info";
+import { Section, SectionHeading, SectionTitle } from "./section";
 
 export function ProjectsSection() {
   return (
-    <section>
-      <div>
-        <p className="text-muted-foreground/50">
-          <span className="mr-3 text-black dark:text-white text-2xl font-doto font-extrabold tracking-wider">
-            Projects
-          </span>
-          Which i totally made by myself.
-        </p>
-      </div>
+    <Section>
+      <SectionHeading>
+        <SectionTitle>Projects</SectionTitle>
+        Which i totally made by myself.
+      </SectionHeading>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         {projects.map((p) => (
           <Card
@@ -55,6 +48,6 @@ export function ProjectsSection() {
           </Card>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
