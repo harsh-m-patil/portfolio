@@ -7,14 +7,17 @@ import {
   IconMail,
 } from "@tabler/icons-react";
 import type { ReactNode } from "react";
+import { Claude } from "@/components/ui/svgs/claude";
 import { Cursor } from "@/components/ui/svgs/cursor";
 import { Docker } from "@/components/ui/svgs/docker";
 import { Git } from "@/components/ui/svgs/git";
+import { GitHubCopilot } from "@/components/ui/svgs/githubCopilot";
 import { GithubDark } from "@/components/ui/svgs/githubDark";
 import { Hono } from "@/components/ui/svgs/hono";
 import { Java } from "@/components/ui/svgs/java";
 import { Javascript } from "@/components/ui/svgs/javascript";
 import { MongodbIconDark } from "@/components/ui/svgs/mongodbIconDark";
+import { OpencodeIcon } from "@/components/ui/svgs/opencode";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Postman } from "@/components/ui/svgs/postman";
 import { ReactDark } from "@/components/ui/svgs/reactDark";
@@ -58,14 +61,17 @@ export const languages = [
   {
     name: "Java",
     icon: <Java />,
+    favourite: false,
   },
   {
     name: "JavaScript",
     icon: <Javascript />,
+    favourite: false,
   },
   {
     name: "TypeScript",
     icon: <Typescript />,
+    favourite: true,
   },
 ];
 
@@ -73,30 +79,37 @@ export const technologies = [
   {
     name: "React",
     icon: <ReactDark />,
+    favourite: false,
   },
   {
     name: "Next.js",
     icon: <IconBrandNextjs />,
+    favourite: false,
   },
   {
     name: "Hono",
     icon: <Hono />,
+    favourite: true,
   },
   {
     name: "TailwindCSS",
     icon: <Tailwindcss />,
+    favourite: false,
   },
   {
     name: "tRPC",
     icon: <Trpc />,
+    favourite: false,
   },
   {
     name: "Tanstack Query",
     icon: <Reactquery />,
+    favourite: true,
   },
   {
     name: "Node.js",
     icon: <IconBrandNodejs />,
+    favourite: false,
   },
 ];
 
@@ -104,14 +117,17 @@ export const databases = [
   {
     name: "MongoDB",
     icon: <MongodbIconDark />,
+    favourite: false,
   },
   {
     name: "PostgreSQL",
     icon: <Postgresql />,
+    favourite: true,
   },
   {
     name: "Redis",
     icon: <Redis />,
+    favourite: false,
   },
 ];
 
@@ -119,26 +135,50 @@ export const tools = [
   {
     name: "Git",
     icon: <Git />,
+    favourite: true,
   },
   {
     name: "GitHub",
     icon: <GithubDark />,
+    favourite: false,
   },
   {
     name: "Docker",
     icon: <Docker />,
-  },
-  {
-    name: "Cursor",
-    icon: <Cursor />,
+    favourite: false,
   },
   {
     name: "Vercel",
     icon: <Vercel />,
+    favourite: false,
   },
   {
     name: "Postman",
     icon: <Postman />,
+    favourite: false,
+  },
+];
+
+export const aiTools = [
+  {
+    name: "Opencode",
+    icon: <OpencodeIcon />,
+    favourite: true,
+  },
+  {
+    name: "Claude Code",
+    icon: <Claude />,
+    favourite: false,
+  },
+  {
+    name: "Cursor",
+    icon: <Cursor />,
+    favourite: false,
+  },
+  {
+    name: "GitHub Copilot",
+    icon: <GitHubCopilot />,
+    favourite: false,
   },
 ];
 

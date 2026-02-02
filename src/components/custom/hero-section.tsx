@@ -1,40 +1,58 @@
+"use client";
+
 import { Download } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Section } from "./section";
 
 export function HeroSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
-        <Image
-          src="/photo.jpg"
-          alt="Harsh Patil profile picture"
-          width={100}
-          height={100}
-          className="size-24 rounded-full object-cover ring-2 brightness-95 saturate-80 ring-black/20 ring-offset-2 ring-offset-background shadow-md dark:ring-white/20"
-        />
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
+          animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src="/photo.jpg"
+            alt="Harsh Patil profile picture"
+            width={100}
+            height={100}
+            className="size-24 rounded-full object-cover ring-2 brightness-95 saturate-80 ring-black/20 ring-offset-2 ring-offset-background shadow-md dark:ring-white/20"
+          />
+        </motion.div>
         <div>
           <div className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
-            Harsh
+            Harshwardhan
           </div>
           <p className="text-muted-foreground">@harshmpatil</p>
         </div>
       </div>
       <div className="py-6 [&_p]:py-2 leading-relaxed tracking-tight [&_span]:text-foreground [&_span]:font-mono [&_p]:text-muted-foreground">
         <p>
-          Hi I am <span>Harsh</span>, a 22 yo developer living in Kolhapur,
-          India. I try to <span>code</span> and not to break things.
+          Hi I am <span>Harshwardhan</span>, a 22 yo developer from Kolhapur
+          working as an <span>Gen AI Intern</span> in{" "}
+          <span className="tracking-tighter">Swiggy, Bengaluru, Karnataka</span>
+          . I try to code and not to break things.
         </p>
         <p>
           I like to call myself a <span>Full Stack Developer</span> with means I
           am equally good (<span>bad</span>) at both frontend and backend.
         </p>
-        <p>
-          Recently i am looking at a lot of <span>AI</span> Stuff, so maybe I
-          can also call myself a <span>AI Engineer</span>. Even though I am
-          clearly not.
-        </p>
+        <div>
+          <p>
+            Recently i am looking at a lot of <span>AI</span> Stuff, so maybe I
+            can also call myself a <span>AI Engineer</span>.
+          </p>
+          <div className="line-through text-muted-foreground">
+            {" "}
+            Even though I am clearly not.
+          </div>
+        </div>
       </div>
       <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
         <Button variant="secondary">
