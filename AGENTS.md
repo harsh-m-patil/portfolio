@@ -1,3 +1,5 @@
+Be extremely concise. Sacrifice grammar for the sake of concision.
+
 # Agent Development Guide
 
 Next.js 16 portfolio project with TypeScript, Tailwind CSS 4, and MDX blog using Fumadocs.
