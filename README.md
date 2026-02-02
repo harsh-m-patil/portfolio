@@ -92,6 +92,7 @@ Deploy on **Vercel** or any Node.js host:
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Fumadocs](https://fumadocs.dev/)
+- GitHub contributions graph credit: [@ncdai](https://github.com/ncdai)
 
 ## Inspiration
 
