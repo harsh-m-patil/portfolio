@@ -147,12 +147,14 @@ export const workExperience = [
     company: "Swiggy",
     role: "Gen AI Intern",
     type: "intern",
-    iconUrl: "/swiggy.png",
+    iconUrl: "/swiggy.jpeg",
     period: "Oct 2025 - Present",
     location: "Onsite - Bangalore",
     points: [
-      "Built automation workflows using n8n to streamline internal processes for non-tech teams.",
-      "Implemented custom MCP integrations for n8n, enabling AI-powered workflow steps and improved automation.",
+      "Built automation workflows in n8n that cut task time by ~95%.",
+      "Shipped custom MCP integrations for n8n to make AI-assisted flows actually work.",
+      "Set up CI/CD on AWS and wrote end-to-end tests so deploys behave.",
+      "Teaming up with AI Infra & Governance folks on enterprise-scale AI stuff.",
     ],
   },
   {
@@ -160,10 +162,13 @@ export const workExperience = [
     role: "Full Stack Developer Intern",
     type: "intern",
     iconUrl: "/talnex.png",
-    period: "Aug 2025 - Sept 2025",
+    period: "Aug 2025 - Sep 2025",
     location: "Remote",
     points: [
-      "Engineered backend features in a production-grade Next.js app with Supabase PostgreSQL, ensuring scalability and reliability",
+      "Built backend features in a production Next.js app with Supabase Postgres, kept it stable and fast.",
+      "Designed and maintained REST APIs so product stuff could actually talk to each other.",
+      "Fixed a nasty production bug, cut downtime by ~40%.",
+      "Worked with a 10-dev team on Git/GitHub, reviews, and agile rituals.",
     ],
   },
 ];

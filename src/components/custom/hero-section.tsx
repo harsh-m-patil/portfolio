@@ -1,17 +1,18 @@
 import { Download } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Section } from "./section";
 
 export function HeroSection() {
   return (
-    <section className="flex flex-col gap-6">
+    <Section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
         <Image
-          src="/profile.png"
+          src="/photo.jpg"
           alt="Harsh Patil profile picture"
           width={100}
           height={100}
-          className="rounded-full object-cover"
+          className="size-24 rounded-full object-cover ring-2 brightness-95 saturate-80 ring-black/20 ring-offset-2 ring-offset-background shadow-md dark:ring-white/20"
         />
         <div>
           <div className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
@@ -48,6 +49,6 @@ export function HeroSection() {
           Download CV
         </Button>
       </div>
-    </section>
+    </Section>
   );
 }
