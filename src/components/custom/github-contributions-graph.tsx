@@ -43,6 +43,7 @@ export function GitHubContributionsGraph({
 
   useEffect(() => {
     if (themeKey) {
+      setActiveThemeKey(themeKey);
       return;
     }
 
