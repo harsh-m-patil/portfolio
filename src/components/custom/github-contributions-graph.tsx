@@ -15,8 +15,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import type { ContributionThemeKey } from "@/lib/contribution-themes";
-import { CONTRIBUTION_THEMES } from "@/lib/contribution-themes";
+import {
+  CONTRIBUTION_THEMES,
+  getRandomContributionThemeKey,
+} from "@/lib/contribution-themes";
 import type { GitHubContributionActivity } from "@/lib/github-contributions";
+import { useEffect, useState } from "react";
 import {
   Section,
   SectionDescription,
@@ -31,9 +35,22 @@ type GitHubContributionsGraphProps = {
 
 export function GitHubContributionsGraph({
   contributions,
-  themeKey = "github",
+  themeKey,
 }: GitHubContributionsGraphProps) {
-  const theme = CONTRIBUTION_THEMES[themeKey].join(" ");
+  const [activeThemeKey, setActiveThemeKey] = useState<ContributionThemeKey>(
+    themeKey ?? "github",
+  );
+
+  useEffect(() => {
+    if (themeKey) {
+      setActiveThemeKey(themeKey);
+      return;
+    }
+
+    setActiveThemeKey(getRandomContributionThemeKey());
+  }, [themeKey]);
+
+  const theme = CONTRIBUTION_THEMES[activeThemeKey].join(" ");
 
   if (contributions.length === 0) {
     return (
@@ -128,7 +145,7 @@ export function GitHubContributionsGraph({
                   {[1, 2, 3, 4].map((level, index) => (
                     <rect
                       // biome-ignore lint/suspicious/noArrayIndexKey: stable order
-                      key={`${themeKey}-${index}`}
+                      key={`${activeThemeKey}-${index}`}
                       className={theme}
                       data-level={level}
                       height={4}
@@ -139,7 +156,7 @@ export function GitHubContributionsGraph({
                     />
                   ))}
                 </svg>
-                {themeKey}
+                {activeThemeKey}
               </Badge>
               <ContributionGraphLegend align="start" />
             </div>
