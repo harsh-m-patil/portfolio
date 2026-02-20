@@ -1,5 +1,5 @@
-import { RootProvider } from "fumadocs-ui/provider/next";
 import { Analytics } from "@vercel/analytics/next";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -21,8 +21,21 @@ const doto = Doto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://harshmpatil.xyz"),
   title: "Harsh's Portfolio",
-  description: "Devloper Portfolio of Harshwardhan",
+  description: "Developer Portfolio of Harshwardhan",
+  openGraph: {
+    title: "Harsh's Portfolio",
+    description: "Developer Portfolio of Harshwardhan",
+    url: "https://harshmpatil.xyz",
+    siteName: "Harsh's Portfolio",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harsh's Portfolio",
+    description: "Developer Portfolio of Harshwardhan",
+  },
 };
 
 export default function RootLayout({
