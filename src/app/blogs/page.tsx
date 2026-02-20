@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { BlogCard } from "@/components/custom/blog-card";
 import { absoluteUrl, siteConfig, toJsonLd } from "@/lib/seo";
 import { source as blog } from "@/lib/source";
@@ -49,11 +50,9 @@ export default function BlogsPage() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
-      <script
-        type="application/ld+json"
-      >
+      <Script id="blogs-collection-json-ld" type="application/ld+json">
         {toJsonLd(collectionJsonLd)}
-      </script>
+      </Script>
       <div className="flex items-center gap-4 mb-8">
         <h1 className="text-4xl font-bold font-doto">Blogs</h1>
         <p className="text-muted-foreground">

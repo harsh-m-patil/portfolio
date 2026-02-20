@@ -2,7 +2,7 @@
 
 import { IconBrandGithub } from "@tabler/icons-react";
 import { ExternalLink } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -35,7 +35,7 @@ export function ProjectsSection() {
         <SectionTitle>Projects</SectionTitle>
         Which i totally made by myself.
       </SectionHeading>
-      <motion.div
+      <m.div
         className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
         variants={containerVariants}
         initial={initial}
@@ -43,7 +43,7 @@ export function ProjectsSection() {
         viewport={viewport}
       >
         {projects.map((p) => (
-          <motion.div
+          <m.div
             key={p.name}
             variants={itemVariants}
             whileHover={
@@ -81,9 +81,9 @@ export function ProjectsSection() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
     </Section>
   );
 }

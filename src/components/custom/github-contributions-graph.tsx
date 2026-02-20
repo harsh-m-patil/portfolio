@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   ContributionGraph,
@@ -20,7 +21,6 @@ import {
   getRandomContributionThemeKey,
 } from "@/lib/contribution-themes";
 import type { GitHubContributionActivity } from "@/lib/github-contributions";
-import { useEffect, useState } from "react";
 import {
   Section,
   SectionDescription,
@@ -144,8 +144,7 @@ export function GitHubContributionsGraph({
                   <title>Theme colors</title>
                   {[1, 2, 3, 4].map((level, index) => (
                     <rect
-                      // biome-ignore lint/suspicious/noArrayIndexKey: stable order
-                      key={`${activeThemeKey}-${index}`}
+                      key={`${activeThemeKey}-${level}`}
                       className={theme}
                       data-level={level}
                       height={4}

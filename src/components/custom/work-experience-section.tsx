@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -10,13 +10,18 @@ import { workExperience } from "@/data/info";
 import { Section, SectionHeading, SectionTitle } from "./section";
 
 type WorkExperienceItemProps = {
-  isRecent: boolean;
+  open: boolean;
+  onToggle: () => void;
   xp: (typeof workExperience)[number];
   index: number;
 };
 
-function WorkExperienceItem({ isRecent, xp, index }: WorkExperienceItemProps) {
-  const [open, setOpen] = useState(isRecent);
+function WorkExperienceItem({
+  open,
+  onToggle,
+  xp,
+  index,
+}: WorkExperienceItemProps) {
   const detailsId = `work-details-${index}`;
 
   return (
@@ -49,24 +54,24 @@ function WorkExperienceItem({ isRecent, xp, index }: WorkExperienceItemProps) {
         <div className="flex items-center justify-between">
           <button
             type="button"
-            onClick={() => setOpen((value) => !value)}
+            onClick={onToggle}
             aria-expanded={open}
             aria-controls={detailsId}
             className="inline-flex items-center gap-2 rounded-full border border-muted/40 bg-muted/20 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground transition hover:border-muted/70 hover:text-foreground"
           >
             I did this
-            <motion.span
+            <m.span
               className="flex"
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
             >
               <ChevronDown className="size-3" />
-            </motion.span>
+            </m.span>
           </button>
         </div>
         <AnimatePresence initial={false}>
           {open ? (
-            <motion.div
+            <m.div
               id={detailsId}
               className="overflow-hidden"
               initial={{ height: 0, opacity: 0 }}
@@ -82,7 +87,7 @@ function WorkExperienceItem({ isRecent, xp, index }: WorkExperienceItemProps) {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
           ) : null}
         </AnimatePresence>
       </CardContent>
@@ -91,6 +96,18 @@ function WorkExperienceItem({ isRecent, xp, index }: WorkExperienceItemProps) {
 }
 
 export function WorkExperienceSection() {
+  const [openStates, setOpenStates] = useState<boolean[]>(() =>
+    workExperience.map((_, index) => index === 0),
+  );
+
+  function toggleOpen(index: number) {
+    setOpenStates((prev) => {
+      const next = [...prev];
+      next[index] = !next[index];
+      return next;
+    });
+  }
+
   return (
     <Section>
       <SectionHeading>
@@ -103,7 +120,8 @@ export function WorkExperienceSection() {
             key={xp.company}
             xp={xp}
             index={index}
-            isRecent={index === 0}
+            open={openStates[index] ?? false}
+            onToggle={() => toggleOpen(index)}
           />
         ))}
       </div>

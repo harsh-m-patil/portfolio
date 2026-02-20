@@ -98,16 +98,27 @@ export function Tokenizer() {
   }
 
   const tokens = useMemo(() => encodeText(text), [text, encodeText]);
+  const tokenItems = useMemo(() => {
+    const counts = new Map<number, number>();
+    let position = -1;
+    return tokens.map((token) => {
+      position += 1;
+      const occurrence = (counts.get(token) ?? 0) + 1;
+      counts.set(token, occurrence);
+      return {
+        token,
+        classIndex: position,
+        key: `${token}-${occurrence}`,
+      };
+    });
+  }, [tokens]);
   const tokenCount =
     tokens.length === 1 ? "1 Token" : `${tokens.length} Tokens`;
   const textLength =
     text.split("").length === 1
       ? "1 Character"
       : `${text.split("").length} Characters`;
-  const wordCount = useMemo(
-    () => (text === "" ? 0 : text.trim().split(/\W+/).length),
-    [text],
-  );
+  const wordCount = text === "" ? 0 : text.trim().split(/\W+/).length;
 
   return (
     <Card className="gap-1">
@@ -130,10 +141,9 @@ export function Tokenizer() {
         <Textarea onChange={handleTextChange} />
         <p className="text-xl">Output tokens (text)</p>
         <div className="mt-4 px-2 min-h-8 text-sm">
-          {tokens.map((t, idx) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: No better key avaibailable
-            <span key={idx} className={cn("border", getClasses(idx))}>
-              {decodeTokens([t])}
+          {tokenItems.map(({ token, classIndex, key }) => (
+            <span key={key} className={cn("border", getClasses(classIndex))}>
+              {decodeTokens([token])}
             </span>
           ))}
         </div>

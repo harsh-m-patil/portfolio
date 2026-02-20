@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { ContactSection } from "@/components/custom/contact-section";
 import { Footer } from "@/components/custom/footer";
 import { GitHubContributionsSection } from "@/components/custom/github-contributions-section";
@@ -39,16 +40,12 @@ export default function Home() {
 
   return (
     <main className="max-w-2xl mx-auto px-4 font-sans pb-12">
-      <script
-        type="application/ld+json"
-      >
+      <Script id="person-json-ld" type="application/ld+json">
         {toJsonLd(personJsonLd)}
-      </script>
-      <script
-        type="application/ld+json"
-      >
+      </Script>
+      <Script id="website-json-ld" type="application/ld+json">
         {toJsonLd(websiteJsonLd)}
-      </script>
+      </Script>
       <HeroSection />
       <Separator className="my-6" />
       <ContactSection />

@@ -1,7 +1,7 @@
 "use client";
 
 import { Download } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Section } from "./section";
@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <Section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
-        <motion.div
+        <m.div
           initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -24,7 +24,7 @@ export function HeroSection() {
             height={100}
             className="size-24 rounded-full object-cover ring-2 brightness-95 saturate-80 ring-black/20 ring-offset-2 ring-offset-background shadow-md dark:ring-white/20"
           />
-        </motion.div>
+        </m.div>
         <div>
           <h1 className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
             Harshwardhan Patil

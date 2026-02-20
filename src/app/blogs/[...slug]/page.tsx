@@ -7,6 +7,7 @@ import {
 } from "fumadocs-ui/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { GiscusComments } from "@/components/custom/giscus-comments";
 import { getMDXComponents } from "@/components/mdx-components";
 import { absoluteUrl, siteConfig, toIsoDate, toJsonLd } from "@/lib/seo";
@@ -54,11 +55,9 @@ export default async function Page(props: PageProps<"/blogs/[...slug]">) {
 
   return (
     <DocsPage full={page.data.full}>
-      <script
-        type="application/ld+json"
-      >
+      <Script id="blog-post-json-ld" type="application/ld+json">
         {toJsonLd(articleJsonLd)}
-      </script>
+      </Script>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>

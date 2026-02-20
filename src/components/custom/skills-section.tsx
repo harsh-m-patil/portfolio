@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { CodeTitle } from "@/components/custom/code-title";
 import {
   aiTools,
@@ -42,7 +42,7 @@ export function SkillsSection() {
         over my tech journey.
       </SectionDescription>
       <CodeTitle>LANGUAGES</CodeTitle>
-      <motion.div
+      <m.div
         className="flex py-3 gap-3 flex-wrap"
         variants={listVariants}
         initial={initial}
@@ -50,16 +50,16 @@ export function SkillsSection() {
         viewport={viewport}
       >
         {languages.map((s) => (
-          <motion.div key={s.name} variants={itemVariants}>
+          <m.div key={s.name} variants={itemVariants}>
             <SkillBadge favourite={s.favourite}>
               {s.icon}
               {s.name}
             </SkillBadge>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
       <CodeTitle>FRAMEWORKS/ TECHNOLOGIES</CodeTitle>
-      <motion.div
+      <m.div
         className="flex py-3 gap-3 flex-wrap"
         variants={listVariants}
         initial={initial}
@@ -67,16 +67,16 @@ export function SkillsSection() {
         viewport={viewport}
       >
         {technologies.map((t) => (
-          <motion.div key={t.name} variants={itemVariants}>
+          <m.div key={t.name} variants={itemVariants}>
             <SkillBadge favourite={t.favourite}>
               {t.icon}
               {t.name}
             </SkillBadge>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
       <CodeTitle>DATABASES</CodeTitle>
-      <motion.div
+      <m.div
         className="flex py-3 gap-3 flex-wrap"
         variants={listVariants}
         initial={initial}
@@ -84,16 +84,16 @@ export function SkillsSection() {
         viewport={viewport}
       >
         {databases.map((t) => (
-          <motion.div key={t.name} variants={itemVariants}>
+          <m.div key={t.name} variants={itemVariants}>
             <SkillBadge favourite={t.favourite}>
               {t.icon}
               {t.name}
             </SkillBadge>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
       <CodeTitle>DEVELOPER TOOLS</CodeTitle>
-      <motion.div
+      <m.div
         className="flex py-3 gap-3 flex-wrap"
         variants={listVariants}
         initial={initial}
@@ -101,16 +101,16 @@ export function SkillsSection() {
         viewport={viewport}
       >
         {tools.map((t) => (
-          <motion.div key={t.name} variants={itemVariants}>
+          <m.div key={t.name} variants={itemVariants}>
             <SkillBadge favourite={t.favourite}>
               {t.icon}
               {t.name}
             </SkillBadge>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
       <CodeTitle>AI DEVELOPER TOOLS</CodeTitle>
-      <motion.div
+      <m.div
         className="flex py-3 gap-3 flex-wrap"
         variants={listVariants}
         initial={initial}
@@ -118,14 +118,14 @@ export function SkillsSection() {
         viewport={viewport}
       >
         {aiTools.map((t) => (
-          <motion.div key={t.name} variants={itemVariants}>
+          <m.div key={t.name} variants={itemVariants}>
             <SkillBadge favourite={t.favourite}>
               {t.icon}
               {t.name}
             </SkillBadge>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
     </Section>
   );
 }

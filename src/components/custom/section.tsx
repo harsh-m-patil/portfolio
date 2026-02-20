@@ -1,6 +1,12 @@
 "use client";
 
-import { type HTMLMotionProps, motion, useReducedMotion } from "motion/react";
+import {
+  domAnimation,
+  type HTMLMotionProps,
+  LazyMotion,
+  m,
+  useReducedMotion,
+} from "motion/react";
 import { cn } from "@/lib/utils";
 
 type SectionProps = HTMLMotionProps<"section">;
@@ -9,14 +15,16 @@ function Section({ className, ...props }: SectionProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.section
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={reduceMotion ? undefined : { once: true, amount: 0.3 }}
-      transition={{ duration: 0.6 }}
-      className={cn(className)}
-      {...props}
-    />
+    <LazyMotion features={domAnimation}>
+      <m.section
+        initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={reduceMotion ? undefined : { once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className={cn(className)}
+        {...props}
+      />
+    </LazyMotion>
   );
 }
 
