@@ -20,6 +20,7 @@ var docs = defineDocs({
   }
 });
 var source_config_default = defineConfig({
+  lastModifiedTime: "git",
   mdxOptions: {
     // MDX options
   }

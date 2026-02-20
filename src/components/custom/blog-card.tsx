@@ -22,7 +22,6 @@ export function BlogCard({ blog, url }: BlogCardProps) {
               height="200"
               width="400"
               alt={blog.title}
-              priority
               className="w-full rounded-l-md h-full object-cover"
             />
           </Link>
@@ -33,7 +32,7 @@ export function BlogCard({ blog, url }: BlogCardProps) {
         <p className="mt-2 text-muted-foreground">{blog.description}</p>
         <div className="flex w-full justify-end px-4 py-3">
           <Link href={url} className="underline tracking-widest">
-            {"<ReadBlog/>"}
+            Read article
           </Link>
         </div>
       </div>

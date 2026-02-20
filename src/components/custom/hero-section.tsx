@@ -26,9 +26,9 @@ export function HeroSection() {
           />
         </motion.div>
         <div>
-          <div className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
-            Harshwardhan
-          </div>
+          <h1 className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase">
+            Harshwardhan Patil
+          </h1>
           <p className="text-muted-foreground">@harshmpatil</p>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/custom/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { siteConfig } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,20 +22,59 @@ const doto = Doto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://harshmpatil.xyz"),
-  title: "Harsh's Portfolio",
-  description: "Developer Portfolio of Harshwardhan",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.shortName}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.shortName,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.creator, url: siteConfig.url }],
+  creator: siteConfig.creator,
+  publisher: siteConfig.creator,
+  alternates: {
+    canonical: "/",
+  },
+  category: "technology",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
-    title: "Harsh's Portfolio",
-    description: "Developer Portfolio of Harshwardhan",
-    url: "https://harshmpatil.xyz",
-    siteName: "Harsh's Portfolio",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.shortName,
+    locale: siteConfig.locale,
     type: "website",
+    images: [
+      {
+        url: siteConfig.defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.defaultOgImageAlt,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harsh's Portfolio",
-    description: "Developer Portfolio of Harshwardhan",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    creator: siteConfig.twitterHandle,
+    site: siteConfig.twitterHandle,
+    images: [siteConfig.defaultOgImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
