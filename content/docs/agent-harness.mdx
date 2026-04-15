@@ -1,0 +1,123 @@
+---
+title: About Agent Harnesses
+description: Brief overview of Agent Harnesses such as Claude Code, Codex, Opencode and Pi.
+---
+
+## Overview
+
+You may have heard the term agent harness throwed around here and there, but
+what exactly is a agent harness.
+
+In simple words it's just a wrapper over the LLM api, this wrapper consists of
+things like the `SYSTEM_PROMPT` , a context manager to manage your conversation
+history, tools that can be called to perform certain tasks, etc.
+The LLM (brain) does the thinking and the harness (body) performs the work.
+
+At the core it's just a loop, running until the LLM thinks it has done good
+enough job finishing the task you have given, or until you interrupt it.
+
+Lets go over each of its component's one by one.
+
+## Components
+
+### `SYSTEM_PROMPT`
+
+It's just some text that tells the model how to behave, certain guidelines it
+needs to follow. It also contains what tools it has access to (also skills).
+
+For reference below is a part of the [Pi](https://github.com/badlogic/pi-mono)
+Its very minimal and token efficient.
+
+On the api level it is send as follow.
+
+```json
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "unnecessarily long system prompt"
+    }
+  ]
+}
+```
+
+```markdown
+You are an expert coding assistant operating inside pi, a coding agent harness. You help users by reading files, executing commands, editing code, and writing new files.
+
+Available tools:
+
+- read: Read file contents
+- bash: Execute bash commands (ls, rg, find, etc.)
+- edit: Make precise file edits with exact text replacement, including multiple disjoint edits in one call
+- write: Create or overwrite files
+
+In addition to the tools above, you may have access to other custom tools depending on the project.
+
+Guidelines:
+
+- Use bash for file operations like ls, rg, find
+- Use read to examine files instead of cat or sed.
+- Use edit for precise changes (edits[].oldText must match exactly)
+- When changing multiple separate locations in one file, use one edit call with multiple entries in edits[] instead of multiple edit calls
+- Each edits[].oldText is matched against the original file, not after earlier edits are applied. Do not emit overlapping or nested edits. Merge nearby changes into one edit.
+- Keep edits[].oldText as small as possible while still being unique in the file. Do not pad with large unchanged regions.
+- Use write only for new files or complete rewrites.
+- Show file paths clearly when working with files
+- Be extremely concise in your responses, sacrifice grammar for the sake of concision.
+- Never use emojis.
+```
+
+<Callout>
+  I have made some changes in the system prompt you can check the orginal using
+  the below link
+</Callout>
+
+[Pi system prompt](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/src/core/system-prompt.ts)
+
+##### Some dynamically included parts include
+
+- Today's Date
+- Current Working Directory
+- Extra Repo level context files (like `CLAUDE.md` or `AGENTS.md`)
+- Available Skills
+
+##### On the other hand CLAUDE CODE's system prompt is quite verbose.
+
+It includes instructions such as
+
+> Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.
+
+You can have a look at it
+[here](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools/tree/main/Anthropic/Claude%20Code)
+
+Claude code's system prompt consists of about ~25000+ tokens on the other hand
+Pi's system prompt consist of ~2600+ tokens.
+
+### Context Manager
+
+LLM's are stateless machines, they do not know what did you send it in the last
+message.
+
+The state management needs to be done by someone else.
+The harness maintains a messages array will all the data during a conversation.
+The entire messages array is passed via the api to the LLM on every single request.
+
+This means the bigger the messages array it should take longer for the LLM to
+respond as it needs more time process all the tokens, and also the network latency
+increases as we are sending more and more tokens via the api.
+This happens every single time, when you send a message, a tool call returns a
+result.
+This can cause significant delays in responses.
+
+This is how almost all the harnesses work at least using the standard api.
+
+To solve this _openai_ does have a websocket mode via the `Responses API`,
+which maintains a persistent websocket connection and stores the messages array
+on there side.
+
+The client only needs to send the new message or tool call result, no need of
+sending the entire conversation, resulting in reduction of network delay.
+
+import {ConversationRenderer} from "../components/conversation-renderer"
+
+<ConversationRenderer/>
