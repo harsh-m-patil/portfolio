@@ -16,9 +16,8 @@ export function GiscusComments() {
       repoId="R_kgDOO14CKg"
       category="Announcements"
       categoryId="DIC_kwDOO14CKs4C1SmO"
-      mapping="specific"
+      mapping="pathname"
       reactionsEnabled="1"
-      term="comments"
       emitMetadata="0"
       inputPosition="top"
       theme={resolvedTheme === "dark" ? "dark" : "light"}
