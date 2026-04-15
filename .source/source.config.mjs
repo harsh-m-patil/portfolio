@@ -6,6 +6,7 @@ import {
   metaSchema
 } from "fumadocs-mdx/config";
 import { z } from "zod";
+import lastModified from "fumadocs-mdx/plugins/last-modified";
 var docs = defineDocs({
   docs: {
     schema: frontmatterSchema.extend({
@@ -21,6 +22,7 @@ var docs = defineDocs({
 });
 var source_config_default = defineConfig({
   lastModifiedTime: "git",
+  plugins: [lastModified()],
   mdxOptions: {
     // MDX options
   }

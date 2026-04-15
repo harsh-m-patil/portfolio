@@ -6,13 +6,13 @@ A modern, responsive portfolio built with **Next.js 15**, **React 19**, and **Ta
 
 ## Features
 
-* Clean dark/light UI with smooth animations
-* Fully responsive design
-* Theme toggle (dark/light)
-* Accessible and SEO-friendly
-* Easy to customize
-* Built-in blog powered by Fumadocs-MDX
-* Real-time analytics with Vercel Analytics
+- Clean dark/light UI with smooth animations
+- Fully responsive design
+- Theme toggle (dark/light)
+- Accessible and SEO-friendly
+- Easy to customize
+- Built-in blog powered by Fumadocs-MDX
+- Real-time analytics with Vercel Analytics
 
 ## Demo
 
@@ -55,20 +55,20 @@ Analytics are provided by Vercel Analytics (`@vercel/analytics`). Page views, ev
 
 ## Customization
 
-* Edit personal info in `src/app/page.tsx`
-* Replace profile image in `public/`
-* Update skills, experience, and links in `src/data/info.tsx`
-* Modify colors in `globals.css`
-* Configure blog schemas in `source.config.ts`
-* Enable or disable analytics via the `@vercel/analytics` import in `src/app/layout.tsx`
+- Edit personal info in `src/app/page.tsx`
+- Replace profile image in `public/`
+- Update skills, experience, and links in `src/data/info.tsx`
+- Modify colors in `globals.css`
+- Configure blog schemas in `source.config.ts`
+- Enable or disable analytics via the `@vercel/analytics` import in `src/app/layout.tsx`
 
 ## Tech Stack
 
-* **Next.js 15**, **React 19**, **TypeScript**
-* **Tailwind CSS**, **Radix UI**, **Lucide Icons**
-* **Biome**, **Turbopack**, **next-themes**
-* **Fumadocs-MDX** (for blog)
-* **@vercel/analytics** (for analytics)
+- **Next.js 15**, **React 19**, **TypeScript**
+- **Tailwind CSS**, **Radix UI**, **Lucide Icons**
+- **Biome**, **Turbopack**, **next-themes**
+- **Fumadocs-MDX** (for blog)
+- **@vercel/analytics** (for analytics)
 
 ## Scripts
 

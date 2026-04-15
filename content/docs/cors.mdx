@@ -21,7 +21,9 @@ By default, browsers block cross-origin requests to protect users from malicious
 If the browser finds that the origin you're requesting **is not allowed**, it blocks access—even if the request reaches the server and the server responds.
 
 <Callout title="Note">
- This restriction is enforced only by browsers. If you use `curl`, `Postman`, or server-side code, CORS does **not** apply—because the check happens in the **browser**, not on the server.
+  This restriction is enforced only by browsers. If you use `curl`, `Postman`,
+  or server-side code, CORS does **not** apply—because the check happens in the
+  **browser**, not on the server.
 </Callout>
 
 ---
@@ -111,11 +113,12 @@ app.listen(3000, () => {
 <Callout title="Warning" type="error">
   `Access-Control-Allow-Origin: '*'` should not be used in production as it allows any origin to access your resource, which can lead to security vulnerabilities. Instead, mention the particular origins specifically as comma separated values.
 
-  `Access-Control-Allow-Credentials: true` cannot be used with wildcard `*`.
+`Access-Control-Allow-Credentials: true` cannot be used with wildcard `*`.
+
 </Callout>
 
 <Callout>
-But as this is just a demo, we can use `*` to allow any origin.
+  But as this is just a demo, we can use `*` to allow any origin.
 </Callout>
 
 ---

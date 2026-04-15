@@ -4,7 +4,5 @@ import { GitHubContributionsGraph } from "./github-contributions-graph";
 export async function GitHubContributionsSection() {
   const contributions = await getGitHubContributions();
 
-  return (
-    <GitHubContributionsGraph contributions={contributions} />
-  );
+  return <GitHubContributionsGraph contributions={contributions} />;
 }

@@ -9,6 +9,7 @@ Next.js 16 portfolio project with TypeScript, Tailwind CSS 4, and MDX blog using
 **Package Manager:** `pnpm` (not npm)
 
 **Commands:**
+
 - `pnpm dev` - Start dev server
 - `pnpm build` - Production build
 - `pnpm lint` - Biome linting (no ESLint/Prettier)
