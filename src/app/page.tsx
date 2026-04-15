@@ -6,6 +6,7 @@ import { GitHubContributionsSection } from "@/components/custom/github-contribut
 import { HeroSection } from "@/components/custom/hero-section";
 import { ProjectsSection } from "@/components/custom/projects-section";
 import { SkillsSection } from "@/components/custom/skills-section";
+import { BlogsSection } from "@/components/custom/blogs-section";
 import { WorkExperienceSection } from "@/components/custom/work-experience-section";
 import { Separator } from "@/components/ui/separator";
 import { absoluteUrl, siteConfig, toJsonLd } from "@/lib/seo";
@@ -49,6 +50,8 @@ export default function Home() {
       <HeroSection />
       <Separator className="my-6" />
       <ContactSection />
+      <Separator className="my-6" />
+      <BlogsSection />
       <Separator className="my-6" />
       <GitHubContributionsSection />
       <Separator className="my-6" />
