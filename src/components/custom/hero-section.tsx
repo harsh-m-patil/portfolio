@@ -13,19 +13,6 @@ export function HeroSection() {
   return (
     <Section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
-        <m.div
-          initial={reduceMotion ? false : { opacity: 0, scale: 0.96, y: 6 }}
-          animate={reduceMotion ? undefined : { opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.32, ease: easeOut }}
-        >
-          <Image
-            src="/photo.jpg"
-            alt="Harsh Patil profile picture"
-            width={100}
-            height={100}
-            className="size-24 rounded-full object-cover ring-2 brightness-95 saturate-80 ring-black/20 ring-offset-2 ring-offset-background shadow-md dark:ring-white/20"
-          />
-        </m.div>
         <div>
           <m.h1
             initial={reduceMotion ? false : { opacity: 0, y: 8 }}
