@@ -1,18 +1,23 @@
-import { IconBrandGithub } from "@tabler/icons-react";
-import { ExternalLink } from "lucide-react";
-import { Section, SectionHeading, SectionTitle } from "./section";
 import { BlogCard } from "@/components/custom/blog-card";
+import { toValidDate } from "@/lib/seo";
 import { source as blog } from "@/lib/source";
+import { Section, SectionHeading, SectionTitle } from "./section";
 
 export function BlogsSection() {
   const posts = blog.getPages();
-  const latestPost = posts.reduce((latest, curr) => {
+  const latestPost = posts.reduce<typeof posts[number] | undefined>((latest, curr) => {
     if (!latest) return curr;
 
-    return new Date(curr.data.lastModified) > new Date(latest.data.lastModified)
-      ? curr
-      : latest;
-  }, posts[0]);
+    const currDate = toValidDate(curr.data.lastModified);
+    const latestDate = toValidDate(latest.data.lastModified);
+
+    if (!currDate) return latest;
+    if (!latestDate) return curr;
+
+    return currDate > latestDate ? curr : latest;
+  }, undefined);
+
+  if (!latestPost) return null;
 
   return (
     <Section>

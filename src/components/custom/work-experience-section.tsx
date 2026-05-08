@@ -23,6 +23,7 @@ function WorkExperienceItem({
   index,
 }: WorkExperienceItemProps) {
   const detailsId = `work-details-${index}`;
+  const easeOut = [0.23, 1, 0.32, 1] as const;
 
   return (
     <Card className="bg-transparent border-none shadow-none gap-3">
@@ -57,13 +58,13 @@ function WorkExperienceItem({
             onClick={onToggle}
             aria-expanded={open}
             aria-controls={detailsId}
-            className="inline-flex items-center gap-2 rounded-full border border-muted/40 bg-muted/20 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground transition hover:border-muted/70 hover:text-foreground"
+            className="inline-flex items-center gap-2 rounded-full border border-muted/40 bg-muted/20 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-[transform,border-color,color,background-color] duration-200 ease-[var(--ease-out)] active:scale-[0.98] supports-[hover:hover]:hover:border-muted/70 supports-[hover:hover]:hover:text-foreground"
           >
             I did this
             <m.span
               className="flex"
               animate={{ rotate: open ? 180 : 0 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.18, ease: easeOut }}
             >
               <ChevronDown className="size-3" />
             </m.span>
@@ -74,10 +75,10 @@ function WorkExperienceItem({
             <m.div
               id={detailsId}
               className="overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.24, ease: "easeOut" }}
+              initial={{ height: 0, opacity: 0, y: -4 }}
+              animate={{ height: "auto", opacity: 1, y: 0 }}
+              exit={{ height: 0, opacity: 0, y: -4 }}
+              transition={{ duration: 0.22, ease: easeOut }}
             >
               <ul className="relative mt-4 border-l border-muted/40 pl-6 text-muted-foreground/70">
                 {xp.points.map((p) => (

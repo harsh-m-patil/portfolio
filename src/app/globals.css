@@ -76,6 +76,9 @@
 
 :root {
   --radius: 0.5rem;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --background: oklch(0.99 0 0);
   --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
@@ -239,7 +242,18 @@
 }
 
 ::view-transition-new(root) {
-  animation: reveal 0.4s ease-in-out forwards;
+  animation: reveal 0.38s var(--ease-in-out) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+  }
 }
 
 @source "../../node_modules/streamdown/dist/index.js";

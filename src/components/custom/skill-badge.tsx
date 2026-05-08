@@ -16,7 +16,7 @@ export function SkillBadge({
     <Button
       variant="secondary"
       className={cn(
-        "relative group",
+        "relative group shadow-sm supports-[hover:hover]:hover:-translate-y-0.5",
         favourite &&
           "border-primary/20 dark:bg-primary/10 text-foreground shadow-sm",
         className,

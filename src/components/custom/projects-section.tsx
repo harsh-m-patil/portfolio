@@ -11,6 +11,7 @@ import { Section, SectionHeading, SectionTitle } from "./section";
 
 export function ProjectsSection() {
   const reduceMotion = useReducedMotion();
+  const easeOut = [0.23, 1, 0.32, 1] as const;
   const initial = reduceMotion ? false : "hidden";
   const whileInView = reduceMotion ? undefined : "show";
   const viewport = reduceMotion ? undefined : { once: true, amount: 0.2 };
@@ -21,11 +22,12 @@ export function ProjectsSection() {
     },
   };
   const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 12, scale: 0.98 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      scale: 1,
+      transition: { duration: 0.36, ease: easeOut },
     },
   };
 
@@ -49,11 +51,11 @@ export function ProjectsSection() {
             whileHover={
               reduceMotion
                 ? undefined
-                : { y: -4, boxShadow: "var(--shadow-lg)" }
+                : { y: -3, scale: 1.01, boxShadow: "var(--shadow-lg)" }
             }
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.18, ease: easeOut }}
           >
-            <Card className="pt-0 bg-background/80 hover:border-dotted">
+            <Card className="pt-0 bg-background/80 transition-[border-color,background-color,box-shadow] duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:border-dotted">
               <CardHeader className="p-0 m-0">
                 <Image
                   src={p.imageUrl}

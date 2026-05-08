@@ -13,14 +13,15 @@ type SectionProps = HTMLMotionProps<"section">;
 
 function Section({ className, ...props }: SectionProps) {
   const reduceMotion = useReducedMotion();
+  const easeOut = [0.23, 1, 0.32, 1] as const;
 
   return (
     <LazyMotion features={domAnimation}>
       <m.section
-        initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 10 }}
         whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={reduceMotion ? undefined : { once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.42, ease: easeOut }}
         className={cn(className)}
         {...props}
       />

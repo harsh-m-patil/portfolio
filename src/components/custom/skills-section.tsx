@@ -19,6 +19,7 @@ import { SkillBadge } from "./skill-badge";
 
 export function SkillsSection() {
   const reduceMotion = useReducedMotion();
+  const easeOut = [0.23, 1, 0.32, 1] as const;
   const initial = reduceMotion ? false : "hidden";
   const whileInView = reduceMotion ? undefined : "show";
   const viewport = reduceMotion ? undefined : { once: true, amount: 0.2 };
@@ -27,8 +28,13 @@ export function SkillsSection() {
     show: { transition: { staggerChildren: 0.05 } },
   };
   const itemVariants = {
-    hidden: { opacity: 0, y: 8 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+    hidden: { opacity: 0, y: 8, scale: 0.98 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.26, ease: easeOut },
+    },
   };
 
   return (

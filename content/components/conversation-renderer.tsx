@@ -139,7 +139,7 @@ function ToolCallBlock({ toolCall }: { toolCall: ToolCall }) {
   return (
     <Card className="py-0 gap-0">
       <CardHeader className="px-4 py-2 border-b">
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2 flex-col">
           <Badge variant="outline" className="font-mono">
             {toolCall.function.name}
           </Badge>

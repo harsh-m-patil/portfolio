@@ -13,16 +13,16 @@ type BlogCardProps = {
 
 export function BlogCard({ blog, url }: BlogCardProps) {
   return (
-    <Card className="grid grid-cols-4 gap-2 border rounded-md p-0">
+    <Card className="group grid grid-cols-4 gap-2 rounded-md border p-0 transition-[transform,border-color,box-shadow] duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:-translate-y-0.5 supports-[hover:hover]:hover:shadow-md">
       <div className="col-span-4 sm:col-span-1">
         {blog.imageUrl && (
-          <Link href={url}>
+          <Link href={url} className="block overflow-hidden rounded-l-md">
             <Image
               src={blog.imageUrl}
               height="200"
               width="400"
               alt={blog.title}
-              className="w-full rounded-l-md h-full object-cover"
+              className="h-full w-full rounded-l-md object-cover transition-transform duration-300 ease-[var(--ease-out)] supports-[hover:hover]:group-hover:scale-[1.02]"
             />
           </Link>
         )}
@@ -31,7 +31,10 @@ export function BlogCard({ blog, url }: BlogCardProps) {
         <p className="text-xl text-foreground">{blog.title}</p>
         <p className="mt-2 text-muted-foreground">{blog.description}</p>
         <div className="flex w-full justify-end px-4 py-3">
-          <Link href={url} className="underline tracking-widest">
+          <Link
+            href={url}
+            className="underline tracking-widest transition-[color,opacity] duration-150 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground"
+          >
             Read article
           </Link>
         </div>

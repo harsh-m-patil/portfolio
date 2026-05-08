@@ -18,6 +18,7 @@ import { Java } from "@/components/ui/svgs/java";
 import { Javascript } from "@/components/ui/svgs/javascript";
 import { MongodbIconDark } from "@/components/ui/svgs/mongodbIconDark";
 import { OpencodeIcon } from "@/components/ui/svgs/opencode";
+import { PiLogo } from "@/components/ui/svgs/piLogo";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Postman } from "@/components/ui/svgs/postman";
 import { ReactDark } from "@/components/ui/svgs/reactDark";
@@ -161,9 +162,14 @@ export const tools = [
 
 export const aiTools = [
   {
+    name: "Pi",
+    icon: <PiLogo />,
+    favourite: true,
+  },
+  {
     name: "Opencode",
     icon: <OpencodeIcon />,
-    favourite: true,
+    favourite: false,
   },
   {
     name: "Claude Code",
