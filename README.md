@@ -1,7 +1,5 @@
 # Portfolio
 
-![Preview](./assets/preview.png)
-
 A modern, responsive portfolio built with **Next.js 15**, **React 19**, and **Tailwind CSS 4** — perfect for showcasing your projects, skills, and blog posts.
 
 ## Features
