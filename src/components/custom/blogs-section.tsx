@@ -2,6 +2,7 @@ import { BlogCard } from "@/components/custom/blog-card";
 import { toValidDate } from "@/lib/seo";
 import { source as blog } from "@/lib/source";
 import { Section, SectionHeading, SectionTitle } from "./section";
+import { AnimatedBlogCard } from "./animated-blog-card";
 
 export function BlogsSection() {
   const posts = blog.getPages();
@@ -24,9 +25,9 @@ export function BlogsSection() {
       <SectionHeading>
         <SectionTitle>Check out my latest blog</SectionTitle>
       </SectionHeading>
-      <div className="py-4">
+      <AnimatedBlogCard>
         <BlogCard blog={latestPost.data} url={latestPost.url} />
-      </div>
+      </AnimatedBlogCard>
     </Section>
   );
 }

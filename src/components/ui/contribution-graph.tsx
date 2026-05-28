@@ -22,7 +22,7 @@ import {
   useMemo,
 } from "react";
 
-import { CONTRIBUTION_THEMES } from "@/lib/contribution-themes";
+import { GITHUB_THEME } from "@/lib/contribution-themes";
 import { cn } from "@/lib/utils";
 
 export type Activity = {
@@ -73,7 +73,7 @@ const DEFAULT_LABELS: Labels = {
   },
 };
 
-const THEME = cn(...CONTRIBUTION_THEMES.github);
+const THEME = cn(...GITHUB_THEME);
 
 type ContributionGraphContextType = {
   data: Activity[];
@@ -250,7 +250,7 @@ export const ContributionGraph = ({
   fontSize = 14,
   labels: labelsProp = undefined,
   maxLevel: maxLevelProp = 4,
-  themeClass = cn(...CONTRIBUTION_THEMES.github),
+  themeClass = cn(...GITHUB_THEME),
   style = {},
   totalCount: totalCountProp = undefined,
   weekStart = 0,

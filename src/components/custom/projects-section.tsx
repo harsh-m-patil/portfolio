@@ -70,10 +70,20 @@ export function ProjectsSection() {
                 <div className="flex justify-between items-center">
                   {p.name}
                   <div className="flex gap-4">
-                    <Link href={p.github} target="_blank" rel="noreferrer">
+                    <Link
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-muted-foreground transition-[color,transform] duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.9]"
+                    >
                       <IconBrandGithub className="size-4" />
                     </Link>
-                    <Link href={p.href} target="_blank" rel="noreferrer">
+                    <Link
+                      href={p.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-muted-foreground transition-[color,transform] duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.9]"
+                    >
                       <ExternalLink className="size-4" />
                     </Link>
                   </div>

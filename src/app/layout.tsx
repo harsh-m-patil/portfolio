@@ -3,6 +3,7 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CurrentlyReading } from "@/components/custom/currently-reading-section";
 import { Navbar } from "@/components/custom/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/lib/seo";
@@ -97,6 +98,7 @@ export default function RootLayout({
           <RootProvider>
             <Navbar />
             {children}
+            <CurrentlyReading />
           </RootProvider>
         </ThemeProvider>
         <Analytics />

@@ -33,7 +33,7 @@ export function BlogCard({ blog, url }: BlogCardProps) {
         <div className="flex w-full justify-end px-4 py-3">
           <Link
             href={url}
-            className="underline tracking-widest transition-[color,opacity] duration-150 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground"
+            className="underline tracking-widest transition-[color,opacity,transform] duration-150 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.97]"
           >
             Read article
           </Link>
