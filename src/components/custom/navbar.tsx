@@ -12,7 +12,11 @@ export function Navbar() {
     <nav className="flex gap-3 max-w-2xl mx-auto items-center justify-end p-4">
       <Tooltip>
         <TooltipTrigger>
-          <Link href="/blogs" aria-label="Read blog posts">
+          <Link
+            href="/blogs"
+            aria-label="Read blog posts"
+            className="inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground transition-[color,transform] duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.92]"
+          >
             <IconBook />
           </Link>
         </TooltipTrigger>
