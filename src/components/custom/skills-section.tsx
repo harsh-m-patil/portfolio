@@ -1,6 +1,4 @@
-"use client";
-
-import { m, useReducedMotion } from "motion/react";
+import type { CSSProperties } from "react";
 import { CodeTitle } from "@/components/custom/code-title";
 import {
   aiTools,
@@ -10,6 +8,7 @@ import {
   tools,
 } from "@/data/info";
 import {
+  RevealGroup,
   Section,
   SectionDescription,
   SectionHeading,
@@ -17,26 +16,32 @@ import {
 } from "./section";
 import { SkillBadge } from "./skill-badge";
 
-export function SkillsSection() {
-  const reduceMotion = useReducedMotion();
-  const easeOut = [0.23, 1, 0.32, 1] as const;
-  const initial = reduceMotion ? false : "hidden";
-  const whileInView = reduceMotion ? undefined : "show";
-  const viewport = reduceMotion ? undefined : { once: true, amount: 0.2 };
-  const listVariants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.05 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 8, scale: 0.98 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.26, ease: easeOut },
-    },
-  };
+type Skill = {
+  name: string;
+  icon: React.ReactNode;
+  favourite?: boolean;
+};
 
+function SkillList({ skills }: { skills: Skill[] }) {
+  return (
+    <RevealGroup className="flex py-3 gap-3 flex-wrap">
+      {skills.map((s, i) => (
+        <div
+          key={s.name}
+          data-reveal-item
+          style={{ "--reveal-index": i } as CSSProperties}
+        >
+          <SkillBadge favourite={s.favourite}>
+            {s.icon}
+            {s.name}
+          </SkillBadge>
+        </div>
+      ))}
+    </RevealGroup>
+  );
+}
+
+export function SkillsSection() {
   return (
     <Section>
       <SectionHeading>
@@ -48,90 +53,15 @@ export function SkillsSection() {
         over my tech journey.
       </SectionDescription>
       <CodeTitle>LANGUAGES</CodeTitle>
-      <m.div
-        className="flex py-3 gap-3 flex-wrap"
-        variants={listVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {languages.map((s) => (
-          <m.div key={s.name} variants={itemVariants}>
-            <SkillBadge favourite={s.favourite}>
-              {s.icon}
-              {s.name}
-            </SkillBadge>
-          </m.div>
-        ))}
-      </m.div>
+      <SkillList skills={languages} />
       <CodeTitle>FRAMEWORKS/ TECHNOLOGIES</CodeTitle>
-      <m.div
-        className="flex py-3 gap-3 flex-wrap"
-        variants={listVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {technologies.map((t) => (
-          <m.div key={t.name} variants={itemVariants}>
-            <SkillBadge favourite={t.favourite}>
-              {t.icon}
-              {t.name}
-            </SkillBadge>
-          </m.div>
-        ))}
-      </m.div>
+      <SkillList skills={technologies} />
       <CodeTitle>DATABASES</CodeTitle>
-      <m.div
-        className="flex py-3 gap-3 flex-wrap"
-        variants={listVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {databases.map((t) => (
-          <m.div key={t.name} variants={itemVariants}>
-            <SkillBadge favourite={t.favourite}>
-              {t.icon}
-              {t.name}
-            </SkillBadge>
-          </m.div>
-        ))}
-      </m.div>
+      <SkillList skills={databases} />
       <CodeTitle>DEVELOPER TOOLS</CodeTitle>
-      <m.div
-        className="flex py-3 gap-3 flex-wrap"
-        variants={listVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {tools.map((t) => (
-          <m.div key={t.name} variants={itemVariants}>
-            <SkillBadge favourite={t.favourite}>
-              {t.icon}
-              {t.name}
-            </SkillBadge>
-          </m.div>
-        ))}
-      </m.div>
+      <SkillList skills={tools} />
       <CodeTitle>AI DEVELOPER TOOLS</CodeTitle>
-      <m.div
-        className="flex py-3 gap-3 flex-wrap"
-        variants={listVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {aiTools.map((t) => (
-          <m.div key={t.name} variants={itemVariants}>
-            <SkillBadge favourite={t.favourite}>
-              {t.icon}
-              {t.name}
-            </SkillBadge>
-          </m.div>
-        ))}
-      </m.div>
+      <SkillList skills={aiTools} />
     </Section>
   );
 }

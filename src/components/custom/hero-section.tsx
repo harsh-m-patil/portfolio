@@ -1,79 +1,74 @@
-"use client";
-
 import { Download } from "lucide-react";
-import { m, useReducedMotion } from "motion/react";
+import type { CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
-import { Section } from "./section";
+
+function stagger(delay: number): CSSProperties {
+  return { "--stagger": `${delay}s` } as CSSProperties;
+}
 
 export function HeroSection() {
-  const reduceMotion = useReducedMotion();
-  const easeOut = [0.23, 1, 0.32, 1] as const;
-
   return (
-    <Section className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
         <div>
-          <m.h1
-            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.34,
-              delay: 0.04,
-              ease: easeOut,
-            }}
-            className="text-3xl text-black dark:text-white font-doto font-extrabold uppercase"
+          <h1
+            className="animate-fade-in-up text-3xl text-black dark:text-white font-doto font-extrabold uppercase"
+            style={stagger(0.04)}
           >
             Harshwardhan Patil
-          </m.h1>
-          <m.p
-            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.08,
-              ease: easeOut,
-            }}
-            className="text-muted-foreground"
+          </h1>
+          <p
+            className="animate-fade-in-up text-muted-foreground"
+            style={stagger(0.08)}
           >
             @harshmpatil
-          </m.p>
+          </p>
         </div>
       </div>
       <div className="py-6 [&_p]:py-2 leading-relaxed tracking-tight [&_span]:text-foreground [&_span]:font-mono [&_p]:text-muted-foreground">
-        <m.p
-          initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.32, delay: 0.12, ease: easeOut }}
-        >
-          Hi I am <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">Harshwardhan</span>, a 22 yo developer from Kolhapur
-          working as an <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">Gen AI Intern</span> in{" "}
-          <span className="tracking-tighter transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">Swiggy, Bengaluru, Karnataka</span>
+        <p className="animate-fade-in-up" style={stagger(0.12)}>
+          Hi I am{" "}
+          <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+            Harshwardhan
+          </span>
+          , a 22 yo developer from Kolhapur working as an{" "}
+          <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+            Gen AI Intern
+          </span>{" "}
+          in{" "}
+          <span className="tracking-tighter transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+            Swiggy, Bengaluru, Karnataka
+          </span>
           . I try to code and not to break things.
-        </m.p>
-        <m.p
-          initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.32, delay: 0.18, ease: easeOut }}
-        >
-          I like to call myself a <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">Full Stack Developer</span> with means I
-          am equally good (<span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">bad</span>) at both frontend and backend.
-        </m.p>
-        <m.div
-          initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.32, delay: 0.24, ease: easeOut }}
-        >
+        </p>
+        <p className="animate-fade-in-up" style={stagger(0.18)}>
+          I like to call myself a{" "}
+          <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+            Full Stack Developer
+          </span>{" "}
+          with means I am equally good (
+          <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+            bad
+          </span>
+          ) at both frontend and backend.
+        </p>
+        <div className="animate-fade-in-up" style={stagger(0.24)}>
           <p>
-            Recently i am looking at a lot of <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">AI</span> Stuff, so maybe I
-            can also call myself a <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">AI Engineer</span>.
+            Recently i am looking at a lot of{" "}
+            <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+              AI
+            </span>{" "}
+            Stuff, so maybe I can also call myself a{" "}
+            <span className="transition-colors duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-primary">
+              AI Engineer
+            </span>
+            .
           </p>
-        </m.div>
+        </div>
       </div>
-      <m.div
-        className="flex flex-col sm:flex-row gap-3 sm:items-center"
-        initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.3, ease: easeOut }}
+      <div
+        className="animate-fade-in-up flex flex-col sm:flex-row gap-3 sm:items-center"
+        style={stagger(0.3)}
       >
         <Button variant="secondary" className="shadow-sm">
           <span className="relative flex size-3">
@@ -89,7 +84,7 @@ export function HeroSection() {
           <Download />
           Download CV
         </Button>
-      </m.div>
-    </Section>
+      </div>
+    </section>
   );
 }

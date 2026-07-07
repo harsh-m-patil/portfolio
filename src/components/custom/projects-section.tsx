@@ -1,61 +1,27 @@
-"use client";
-
 import { IconBrandGithub } from "@tabler/icons-react";
 import { ExternalLink } from "lucide-react";
-import { m, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { projects } from "@/data/info";
-import { Section, SectionHeading, SectionTitle } from "./section";
+import { RevealGroup, Section, SectionHeading, SectionTitle } from "./section";
 
 export function ProjectsSection() {
-  const reduceMotion = useReducedMotion();
-  const easeOut = [0.23, 1, 0.32, 1] as const;
-  const initial = reduceMotion ? false : "hidden";
-  const whileInView = reduceMotion ? undefined : "show";
-  const viewport = reduceMotion ? undefined : { once: true, amount: 0.2 };
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: { staggerChildren: 0.08 },
-    },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 12, scale: 0.98 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.36, ease: easeOut },
-    },
-  };
-
   return (
     <Section>
       <SectionHeading>
         <SectionTitle>Projects</SectionTitle>
         Which i totally made by myself.
       </SectionHeading>
-      <m.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"
-        variants={containerVariants}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-      >
-        {projects.map((p) => (
-          <m.div
+      <RevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {projects.map((p, i) => (
+          <div
             key={p.name}
-            variants={itemVariants}
-            whileHover={
-              reduceMotion
-                ? undefined
-                : { y: -3, scale: 1.01, boxShadow: "var(--shadow-lg)" }
-            }
-            transition={{ duration: 0.18, ease: easeOut }}
+            data-reveal-item
+            style={{ "--reveal-index": i } as CSSProperties}
           >
-            <Card className="pt-0 bg-background/80 transition-[border-color,background-color,box-shadow] duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:border-dotted">
+            <Card className="pt-0 bg-background/80 transition-[border-color,background-color,box-shadow,transform] duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:border-dotted supports-[hover:hover]:hover:shadow-lg supports-[hover:hover]:hover:-translate-y-0.5">
               <CardHeader className="p-0 m-0">
                 <Image
                   src={p.imageUrl}
@@ -93,9 +59,9 @@ export function ProjectsSection() {
                 </div>
               </CardContent>
             </Card>
-          </m.div>
+          </div>
         ))}
-      </m.div>
+      </RevealGroup>
     </Section>
   );
 }

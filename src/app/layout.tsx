@@ -1,5 +1,4 @@
 import { Analytics } from "@vercel/analytics/next";
-import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { Doto, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -95,11 +94,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <RootProvider>
-            <Navbar />
-            {children}
-            <CurrentlyReading />
-          </RootProvider>
+          <Navbar />
+          {children}
+          <CurrentlyReading />
         </ThemeProvider>
         <Analytics />
       </body>

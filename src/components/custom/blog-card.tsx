@@ -16,7 +16,10 @@ export function BlogCard({ blog, url }: BlogCardProps) {
     <Card className="group grid grid-cols-4 gap-2 rounded-md border p-0 transition-[transform,border-color,box-shadow] duration-200 ease-[var(--ease-out)] supports-[hover:hover]:hover:-translate-y-0.5 supports-[hover:hover]:hover:shadow-md">
       <div className="col-span-4 sm:col-span-1">
         {blog.imageUrl && (
-          <Link href={url} className="block h-full overflow-hidden rounded-l-md">
+          <Link
+            href={url}
+            className="block h-full overflow-hidden rounded-l-md"
+          >
             <Image
               src={blog.imageUrl}
               height="400"

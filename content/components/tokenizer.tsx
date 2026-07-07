@@ -1,11 +1,13 @@
 "use client";
 
 import { Tiktoken } from "js-tiktoken/lite";
-import cl100k_base from "js-tiktoken/ranks/cl100k_base";
-import gpt_2 from "js-tiktoken/ranks/gpt2";
-import o200k_base from "js-tiktoken/ranks/o200k_base";
-import p50k_base from "js-tiktoken/ranks/p50k_base";
-import { type ChangeEvent, useCallback, useMemo, useState } from "react";
+import {
+  type ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -35,11 +37,6 @@ function getClasses(num: number) {
   return classes[num % classes.length];
 }
 
-const enC200k = new Tiktoken(o200k_base);
-const encCl100k = new Tiktoken(cl100k_base);
-const encP50k = new Tiktoken(p50k_base);
-const encGpt2 = new Tiktoken(gpt_2);
-
 const models = [
   // o200k_base
   "gpt-4o",
@@ -55,38 +52,62 @@ const models = [
 
 type Model = (typeof models)[number];
 
+type Encoding = "o200k_base" | "cl100k_base" | "p50k_base" | "gpt2";
+
+const modelToEncoding: Record<Model, Encoding> = {
+  "gpt-4o": "o200k_base",
+  "gpt-4o-mini": "o200k_base",
+  "gpt-4": "cl100k_base",
+  "gpt-3.5-turbo": "cl100k_base",
+  "text-embedding-3-small": "p50k_base",
+  "gpt-2": "gpt2",
+};
+
+// Rank tables are ~1MB+ each, so load them on demand instead of bundling
+// them into the page chunk.
+const encoderCache = new Map<Encoding, Promise<Tiktoken>>();
+
+function loadEncoder(encoding: Encoding): Promise<Tiktoken> {
+  let cached = encoderCache.get(encoding);
+  if (!cached) {
+    const ranksPromise = {
+      o200k_base: () => import("js-tiktoken/ranks/o200k_base"),
+      cl100k_base: () => import("js-tiktoken/ranks/cl100k_base"),
+      p50k_base: () => import("js-tiktoken/ranks/p50k_base"),
+      gpt2: () => import("js-tiktoken/ranks/gpt2"),
+    }[encoding]();
+    cached = ranksPromise.then((mod) => new Tiktoken(mod.default));
+    encoderCache.set(encoding, cached);
+  }
+  return cached;
+}
+
 export function Tokenizer() {
   const [text, setText] = useState<string>("");
   const [model, setModel] = useState<Model>("gpt-4o");
+  const [encoder, setEncoder] = useState<Tiktoken | null>(null);
+
+  const encoding = modelToEncoding[model];
+
+  useEffect(() => {
+    let cancelled = false;
+    setEncoder(null);
+    loadEncoder(encoding).then((enc) => {
+      if (!cancelled) setEncoder(enc);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [encoding]);
 
   const encodeText = useCallback(
-    (text: string) => {
-      let tokens: number[] = [];
-      if (model === "gpt-4o" || model === "gpt-4o-mini") {
-        tokens = enC200k.encode(text);
-      } else if (model === "gpt-4" || model === "gpt-3.5-turbo") {
-        tokens = encCl100k.encode(text);
-      } else if (model === "text-embedding-3-small") {
-        tokens = encP50k.encode(text);
-      } else {
-        tokens = encGpt2.encode(text);
-      }
-
-      return tokens;
-    },
-    [model],
+    (text: string) => (encoder ? encoder.encode(text) : []),
+    [encoder],
   );
 
   const decodeTokens = useCallback(
-    (tokens: number[]) => {
-      if (model === "gpt-4o" || model === "gpt-4o-mini")
-        return enC200k.decode(tokens);
-      if (model === "gpt-4" || model === "gpt-3.5-turbo")
-        return encCl100k.decode(tokens);
-      if (model === "text-embedding-3-small") return encP50k.decode(tokens);
-      return encGpt2.decode(tokens);
-    },
-    [model],
+    (tokens: number[]) => (encoder ? encoder.decode(tokens) : ""),
+    [encoder],
   );
 
   function handleModelChange(model: string) {
