@@ -6,16 +6,16 @@ export function Footer() {
     <Section>
       <footer className="text-muted-foreground/60 text-sm">
         Thanks for visiting my website. If you liked it, feel free to connect
-        with me and if you want to use this portfolio template
+        with me and if you want, grab the{" "}
         <Link
           href="https://github.com/harsh-m-patil/portfolio"
           target="_blank"
           rel="noreferrer"
-          className="ml-1 underline font-mono transition-colors duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground"
+          className="underline font-mono transition-colors duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground"
         >
-          here
-        </Link>{" "}
-        you go.
+          portfolio template on GitHub
+        </Link>
+        .
         <br />
         <br />
         &copy; {new Date().getFullYear()} Harshwardhan

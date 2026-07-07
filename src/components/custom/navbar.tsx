@@ -11,7 +11,7 @@ export function Navbar() {
   return (
     <nav className="flex gap-3 max-w-2xl mx-auto items-center justify-end p-4">
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <Link
             href="/blogs"
             aria-label="Read blog posts"
