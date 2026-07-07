@@ -18,15 +18,16 @@ export function ContactSection() {
             data-reveal-item
             style={{ "--reveal-index": i } as CSSProperties}
           >
-            <Link href={s.href} target="_blank">
-              <Button
-                variant="secondary"
-                className="shadow-sm transition-transform duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:-translate-y-0.5"
-              >
+            <Button
+              asChild
+              variant="secondary"
+              className="shadow-sm transition-transform duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:-translate-y-0.5"
+            >
+              <Link href={s.href} target="_blank" rel="noreferrer">
                 {s.icon}
                 {s.name}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         ))}
       </RevealGroup>

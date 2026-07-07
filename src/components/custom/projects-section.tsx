@@ -40,6 +40,7 @@ export function ProjectsSection() {
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={`${p.name} source code on GitHub`}
                       className="text-muted-foreground transition-[color,transform] duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.9]"
                     >
                       <IconBrandGithub className="size-4" />
@@ -48,6 +49,7 @@ export function ProjectsSection() {
                       href={p.href}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={`${p.name} live demo`}
                       className="text-muted-foreground transition-[color,transform] duration-160 ease-[var(--ease-out)] supports-[hover:hover]:hover:text-foreground active:scale-[0.9]"
                     >
                       <ExternalLink className="size-4" />
