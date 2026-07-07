@@ -1,32 +1,48 @@
 "use client";
 
-import {
-  domAnimation,
-  type HTMLMotionProps,
-  LazyMotion,
-  m,
-  useReducedMotion,
-} from "motion/react";
+import { type RefObject, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-type SectionProps = HTMLMotionProps<"section">;
+/**
+ * Applies the reveal-on-scroll effect via `data-reveal` (styles in
+ * globals.css). The hidden state is only set after hydration and only for
+ * elements below the viewport, so server-rendered content is never blank.
+ */
+function useRevealRef<T extends HTMLElement>(): RefObject<T | null> {
+  const ref = useRef<T>(null);
 
-function Section({ className, ...props }: SectionProps) {
-  const reduceMotion = useReducedMotion();
-  const easeOut = [0.23, 1, 0.32, 1] as const;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
 
-  return (
-    <LazyMotion features={domAnimation}>
-      <m.section
-        initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-        viewport={reduceMotion ? undefined : { once: true, amount: 0.3 }}
-        transition={{ duration: 0.42, ease: easeOut }}
-        className={cn(className)}
-        {...props}
-      />
-    </LazyMotion>
-  );
+    el.dataset.reveal = "hidden";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          el.dataset.reveal = "shown";
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
+function Section({ className, ...props }: React.ComponentProps<"section">) {
+  const ref = useRevealRef<HTMLElement>();
+  return <section ref={ref} className={cn(className)} {...props} />;
+}
+
+/** Container whose `[data-reveal-item]` children fade in with a stagger. */
+function RevealGroup({ className, ...props }: React.ComponentProps<"div">) {
+  const ref = useRevealRef<HTMLDivElement>();
+  return <div ref={ref} className={cn(className)} {...props} />;
 }
 
 function SectionHeading({ className, ...props }: React.ComponentProps<"p">) {
@@ -54,4 +70,10 @@ function SectionDescription({
   );
 }
 
-export { Section, SectionHeading, SectionTitle, SectionDescription };
+export {
+  Section,
+  RevealGroup,
+  SectionHeading,
+  SectionTitle,
+  SectionDescription,
+};

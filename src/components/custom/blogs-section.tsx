@@ -2,21 +2,23 @@ import { BlogCard } from "@/components/custom/blog-card";
 import { toValidDate } from "@/lib/seo";
 import { source as blog } from "@/lib/source";
 import { Section, SectionHeading, SectionTitle } from "./section";
-import { AnimatedBlogCard } from "./animated-blog-card";
 
 export function BlogsSection() {
   const posts = blog.getPages();
-  const latestPost = posts.reduce<typeof posts[number] | undefined>((latest, curr) => {
-    if (!latest) return curr;
+  const latestPost = posts.reduce<(typeof posts)[number] | undefined>(
+    (latest, curr) => {
+      if (!latest) return curr;
 
-    const currDate = toValidDate(curr.data.lastModified);
-    const latestDate = toValidDate(latest.data.lastModified);
+      const currDate = toValidDate(curr.data.lastModified);
+      const latestDate = toValidDate(latest.data.lastModified);
 
-    if (!currDate) return latest;
-    if (!latestDate) return curr;
+      if (!currDate) return latest;
+      if (!latestDate) return curr;
 
-    return currDate > latestDate ? curr : latest;
-  }, undefined);
+      return currDate > latestDate ? curr : latest;
+    },
+    undefined,
+  );
 
   if (!latestPost) return null;
 
@@ -25,9 +27,9 @@ export function BlogsSection() {
       <SectionHeading>
         <SectionTitle>Check out my latest blog</SectionTitle>
       </SectionHeading>
-      <AnimatedBlogCard>
+      <div className="py-4">
         <BlogCard blog={latestPost.data} url={latestPost.url} />
-      </AnimatedBlogCard>
+      </div>
     </Section>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { AnimatePresence, m } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { workExperience } from "@/data/info";
+import { cn } from "@/lib/utils";
 import { Section, SectionHeading, SectionTitle } from "./section";
 
 type WorkExperienceItemProps = {
@@ -23,7 +23,6 @@ function WorkExperienceItem({
   index,
 }: WorkExperienceItemProps) {
   const detailsId = `work-details-${index}`;
-  const easeOut = [0.23, 1, 0.32, 1] as const;
 
   return (
     <Card className="bg-transparent border-none shadow-none gap-3">
@@ -61,36 +60,35 @@ function WorkExperienceItem({
             className="inline-flex items-center gap-2 rounded-full border border-muted/40 bg-muted/20 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground transition-[transform,border-color,color,background-color] duration-200 ease-[var(--ease-out)] active:scale-[0.98] supports-[hover:hover]:hover:border-muted/70 supports-[hover:hover]:hover:text-foreground"
           >
             I did this
-            <m.span
-              className="flex"
-              animate={{ rotate: open ? 180 : 0 }}
-              transition={{ duration: 0.18, ease: easeOut }}
+            <span
+              className={cn(
+                "flex transition-transform duration-200 ease-[var(--ease-out)]",
+                open && "rotate-180",
+              )}
             >
               <ChevronDown className="size-3" />
-            </m.span>
+            </span>
           </button>
         </div>
-        <AnimatePresence initial={false}>
-          {open ? (
-            <m.div
-              id={detailsId}
-              className="overflow-hidden"
-              initial={{ height: 0, opacity: 0, y: -4 }}
-              animate={{ height: "auto", opacity: 1, y: 0 }}
-              exit={{ height: 0, opacity: 0, y: -4 }}
-              transition={{ duration: 0.22, ease: easeOut }}
-            >
-              <ul className="relative mt-4 border-l border-muted/40 pl-6 text-muted-foreground/70">
-                {xp.points.map((p) => (
-                  <li key={p} className="relative pb-4 pl-4 last:pb-0">
-                    <span className="absolute left-[-9px] top-2 size-2 rounded-full bg-muted-foreground/70" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </m.div>
-          ) : null}
-        </AnimatePresence>
+        <div
+          id={detailsId}
+          aria-hidden={!open}
+          className={cn(
+            "grid transition-[grid-template-rows,opacity] duration-200 ease-[var(--ease-out)]",
+            open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+          )}
+        >
+          <div className="overflow-hidden">
+            <ul className="relative mt-4 border-l border-muted/40 pl-6 text-muted-foreground/70">
+              {xp.points.map((p) => (
+                <li key={p} className="relative pb-4 pl-4 last:pb-0">
+                  <span className="absolute left-[-9px] top-2 size-2 rounded-full bg-muted-foreground/70" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

@@ -245,9 +245,63 @@
   animation: reveal 0.38s var(--ease-in-out) forwards;
 }
 
+/* CSS-only entrance animation so above-the-fold content (LCP) paints
+   without waiting for JS hydration. */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.34s var(--ease-out) both;
+  animation-delay: var(--stagger, 0s);
+}
+
+/* Scroll reveal: the "hidden" state is applied by JS after hydration, so
+   content stays fully visible without JavaScript and is never hidden
+   above the fold. */
+[data-reveal] {
+  transition:
+    opacity 0.42s var(--ease-out),
+    transform 0.42s var(--ease-out);
+}
+
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+[data-reveal] [data-reveal-item] {
+  transition:
+    opacity 0.28s var(--ease-out),
+    transform 0.28s var(--ease-out);
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+
+[data-reveal="hidden"] [data-reveal-item] {
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .animate-fade-in-up {
+    animation: none;
+  }
+
+  [data-reveal],
+  [data-reveal] [data-reveal-item] {
+    transition: none;
   }
 
   ::view-transition-old(root),
